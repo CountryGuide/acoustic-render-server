@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import express from "express";
 import compression from 'compression';
 import logger from 'morgan';
@@ -13,6 +14,19 @@ app.use(compression());
 app.use(logger('dev'));
 
 app.use(express.static('public'));
+
+app.get('/api/users', (req, res) => {
+    res.json([
+        {
+            id: 1,
+            name: 'User1'
+        },
+        {
+            id: 2,
+            name: 'User2'
+        }
+    ]);
+});
 
 app.get('*', (req, res) => {
     const store = storeCreator();

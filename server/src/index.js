@@ -4,6 +4,7 @@ import logger from 'morgan';
 import spdy from 'spdy';
 import fs from 'fs';
 import { render } from './helper/renderer';
+import { storeCreator } from './helper/createStore';
 
 const PORT = 3000;
 const app  = express();
@@ -13,8 +14,9 @@ app.use(logger('dev'));
 
 app.use(express.static('public'));
 
-app.get('/', (req, res) => {
-    res.send(render());
+app.get('*', (req, res) => {
+    const store = storeCreator();
+    res.send(render(req, store));
 });
 
 const options = {

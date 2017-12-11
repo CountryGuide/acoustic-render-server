@@ -9,7 +9,7 @@
     "dev:watch-client": "webpack --config webpack.client.js -w",
     "server": "nodemon --watch build --exec \"node build/bundle.js\""
   },
-  "author": "",
+  "author": "Ivan Yakovlev",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",

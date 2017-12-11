@@ -10,7 +10,11 @@ import { combinedReducers } from './reducers';
 import { renderRoutes } from 'react-router-config';
 
 
-const store = createStore(combinedReducers, {}, applyMiddleware(thunk));
+const store = createStore(
+    combinedReducers,
+    window.INITIAL_STATE,
+    applyMiddleware(thunk)
+);
 
 ReactDOM.hydrate(
     <Provider store={store}>

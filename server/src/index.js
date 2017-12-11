@@ -6,6 +6,8 @@ import spdy from 'spdy';
 import fs from 'fs';
 import { render } from './helper/renderer';
 import { storeCreator } from './helper/createStore';
+import { Routes } from './client/Routes';
+import { matchRoutes } from 'react-router-config';
 
 const PORT = 3000;
 const app  = express();
@@ -15,21 +17,16 @@ app.use(logger('dev'));
 
 app.use(express.static('public'));
 
-app.get('/api/users', (req, res) => {
-    res.json([
-        {
-            id: 1,
-            name: 'User1'
-        },
-        {
-            id: 2,
-            name: 'User2'
-        }
-    ]);
-});
-
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
     const store = storeCreator();
+
+    const promises = matchRoutes(Routes, req.url)
+        .map(({ route }) => {
+            return route.loadData ? route.loadData(store) : null;
+        });
+
+    await Promise.all(promises);
+
     res.send(render(req, store));
 });
 

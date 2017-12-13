@@ -12,8 +12,7 @@ import { renderRoutes } from 'react-router-config';
 
 
 const axiosInstance = axios.create({
-    baseURL: '/api',
-
+    baseURL: '/api'
 });
 
 const store = createStore(

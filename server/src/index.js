@@ -13,14 +13,19 @@ import { matchRoutes } from 'react-router-config';
 const PORT = 3000;
 const app  = express();
 
-app.use('/api', proxy('http://react-ssr-api.herokuapp.com/'));
-// app.use(compression());
+app.use('/api', proxy('http://react-ssr-api.herokuapp.com/', {
+    proxyReqOptDecorator(opts) {
+        opts.headers['x-forwarded-host'] = 'localhost:3000';
+        return opts;
+    }
+}));
+app.use(compression());
 app.use(logger('dev'));
 
 app.use(express.static('public'));
 
 app.get('*', async (req, res) => {
-    const store = storeCreator();
+    const store = storeCreator(req);
 
     const promises = matchRoutes(Routes, req.url)
         .map(({ route }) => {

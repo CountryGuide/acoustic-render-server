@@ -7,10 +7,10 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 
 
-export function render (req, store) {
+export function render (req, store, context) {
     const content = ReactDOMServer.renderToString(
         <Provider store={store}>
-            <StaticRouter context={{}} location={req.url}>
+            <StaticRouter context={context} location={req.url}>
                 <div>{renderRoutes(Routes)}</div>
             </StaticRouter>
         </Provider>
@@ -19,7 +19,9 @@ export function render (req, store) {
     return `
         <!DOCTYPE html>
         <html>
-            <head></head>
+            <head>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+            </head>
             <body>
                 <div id="root">${content}</div>
                 <script >

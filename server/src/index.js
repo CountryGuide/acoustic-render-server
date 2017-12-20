@@ -3,8 +3,8 @@ import express from "express";
 import compression from 'compression';
 import logger from 'morgan';
 import proxy from 'express-http-proxy';
-// import spdy from 'spdy';
-// import fs from 'fs';
+import spdy from 'spdy';
+import fs from 'fs';
 import { render } from './helper/renderer';
 import { storeCreator } from './helper/createStore';
 import { Routes } from './client/Routes';
@@ -33,28 +33,33 @@ app.get('*', async (req, res) => {
         });
 
     await Promise.all(promises);
+    const context = {};
+    const content = render(req, store, context);
 
-    res.send(render(req, store));
+    if (context.notFound) {
+        res.status(404);
+    }
+
+    res.send(content);
 });
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}.`);
 });
 
-/*
-const options = {
-    key:  fs.readFileSync('./src/certificates/server.key'),
-    cert: fs.readFileSync('./src/certificates/server.crt')
-};
 
-spdy
-    .createServer(options, app)
-    .listen(PORT, error => {
-        if (error) {
-            console.error(error);
-            return process.exit(1);
-        } else {
-            console.log('Listening on port: ' + PORT + '.')
-        }
-    });
-*/
+// const options = {
+//     key:  fs.readFileSync('./src/certificates/server.key'),
+//     cert: fs.readFileSync('./src/certificates/server.crt')
+// };
+//
+// spdy
+//     .createServer(options, app)
+//     .listen(PORT, error => {
+//         if (error) {
+//             console.error(error);
+//             return process.exit(1);
+//         } else {
+//             console.log('Listening on port: ' + PORT + '.')
+//         }
+//     });

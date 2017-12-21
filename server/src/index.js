@@ -42,7 +42,6 @@ app.get('*', async (req, res) => {
     const context = {};
     const content = render(req, store, context);
 
-    console.log(context);
     if (context.url) {
         return res.redirect(301, context.url);
     }

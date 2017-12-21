@@ -3,8 +3,6 @@ import express from "express";
 import compression from 'compression';
 import logger from 'morgan';
 import proxy from 'express-http-proxy';
-import spdy from 'spdy';
-import fs from 'fs';
 import { render } from './helper/renderer';
 import { storeCreator } from './helper/createStore';
 import { Routes } from './client/Routes';
@@ -14,7 +12,7 @@ const PORT = 3000;
 const app  = express();
 
 app.use('/api', proxy('http://react-ssr-api.herokuapp.com/', {
-    proxyReqOptDecorator(opts) {
+    proxyReqOptDecorator (opts) {
         opts.headers['x-forwarded-host'] = 'localhost:3000';
         return opts;
     }
@@ -30,12 +28,24 @@ app.get('*', async (req, res) => {
     const promises = matchRoutes(Routes, req.url)
         .map(({ route }) => {
             return route.loadData ? route.loadData(store) : null;
+        })
+        .map(promise => {
+            if (promise) {
+                return new Promise((resolve, reject) => {
+                    promise.then(resolve).catch(resolve);
+                });
+            }
         });
 
     await Promise.all(promises);
+
     const context = {};
     const content = render(req, store, context);
 
+    console.log(context);
+    if (context.url) {
+        return res.redirect(301, context.url);
+    }
     if (context.notFound) {
         res.status(404);
     }

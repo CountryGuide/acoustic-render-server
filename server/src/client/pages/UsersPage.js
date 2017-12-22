@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 import {arrayMove, SortableContainer, SortableElement} from "react-sortable-hoc";
 
 
-const SortableItem = SortableElement(({ value }) =>
+const SortableItem = SortableElement(({value}) =>
     <li className={'collection-item'}>{value}</li>
 );
 
@@ -14,11 +14,12 @@ const SortableList = SortableContainer(({items}) => {
         <ul className={'collection with-header'}>
             <li className={'collection-header'}><h3>List of Users</h3></li>
             {items.map((value, index) => (
-                <SortableItem key={`item-${index}`} index={index} value={value} />
+                <SortableItem key={`item-${index}`} index={index} value={value}/>
             ))}
         </ul>
     );
 });
+
 
 class UsersPage extends React.Component {
     constructor(props) {
@@ -29,6 +30,7 @@ class UsersPage extends React.Component {
             this.props.usersListSorted(users);
         }
     }
+
     componentDidMount() {
         this.props.fetchUsers();
     };
@@ -53,22 +55,24 @@ class UsersPage extends React.Component {
 }
 
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
     return {
         users: state.users
     }
-}
+};
 
-const mapDispatchToProps = dispatch => ({
-    fetchUsers,
-    usersListSorted: users => dispatch({ type: 'USERS_LIST_SORTED', payload: {users} })
-});
+const usersListSorted = users => dispatch => {
+    dispatch({
+        type: 'USERS_LIST_SORTED',
+        payload: {users}
+    })
+};
 
-function loadData(store) {
+const loadData = store => {
     return store.dispatch(fetchUsers());
-}
+};
 
 export default {
     loadData,
-    component: connect(mapStateToProps, mapDispatchToProps)(UsersPage)
+    component: connect(mapStateToProps, {usersListSorted, fetchUsers})(UsersPage)
 }

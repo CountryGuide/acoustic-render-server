@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchAdmins } from '../actions/index';
 import requireAuth from "../components/hocs/requireAuth";
+import {Helmet} from "react-helmet";
 
 
 class AdminsPage extends React.Component {
@@ -10,14 +11,26 @@ class AdminsPage extends React.Component {
     }
 
     renderAdmins() {
-        return this.props.admins.map(admin => <li key={admin.id}>{admin.name}</li>);
+        return this.props.admins.map(admin => <li className={'collection-item'} key={admin.id}>{admin.name}</li>);
+    }
+
+    head() {
+        return (
+            <Helmet>
+                <title>Admins</title>
+                <meta property={'og:title'} content={'Admins'}/>
+            </Helmet>
+        );
     }
 
     render () {
         return (
             <div>
-                List of Users
-                <ul>{this.renderAdmins()}</ul>
+                {this.head()}
+                <ul className={'collection with-header'}>
+                    <h3>List of Admins</h3>
+                    {this.renderAdmins()}
+                </ul>
             </div>
         );
     }

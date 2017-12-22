@@ -3,7 +3,8 @@ export const FETCH_ADMINS       = 'FETCH_ADMINS';
 export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
 
 export const fetchUsers = () => async (dispatch, getState, api) => {
-    const res = await api.get('/users');
+    let res = await api.get('/users');
+    res = {data: (res.data).map(user => user.name)};
     dispatch({
         type:    FETCH_USERS,
         payload: res

@@ -28,7 +28,7 @@ class AdminsPage extends React.Component {
             <div>
                 {this.head()}
                 <ul className={'collection with-header'}>
-                    <h3>List of Admins</h3>
+                    <li className={'collection-header'}><h3>List of Admins</h3></li>
                     {this.renderAdmins()}
                 </ul>
             </div>

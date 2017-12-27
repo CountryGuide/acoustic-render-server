@@ -3,19 +3,20 @@ import express from "express";
 import compression from 'compression';
 import logger from 'morgan';
 import proxy from 'express-http-proxy';
+import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { render } from './helper/renderer';
 import { storeCreator } from './helper/createStore';
 import { Routes } from './client/Routes';
 import { matchRoutes } from 'react-router-config';
-import { UserSchema } from './models/Users';
+import { TrackSchema } from './models/Track';
 
 mongoose.Promise = global.Promise;
 
 const PORT = 3000;
 const app  = express();
 
-const User = mongoose.model('User');
+const Track = mongoose.model('Track');
 
 app.use('/api', proxy('http://react-ssr-api.herokuapp.com/', {
     proxyReqOptDecorator (opts) {
@@ -25,6 +26,8 @@ app.use('/api', proxy('http://react-ssr-api.herokuapp.com/', {
 }));
 app.use(compression());
 app.use(logger('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
@@ -32,17 +35,22 @@ mongoose.connect('mongodb://localhost/react_ssr', { useMongoClient: true });
 mongoose.set('debug', true);
 
 app.use('/api2/newuser', async function (req, res, next) {
-    const user = new User();
+    let count = 0;
 
-    user.username = 'unknown user';
-    await user.save();
+    for (let i = 0; i < 10001; i++) {
+        const track = new Track();
 
-    res.json({message: `Successfully created ${user.username}`});
+        track.title = req.body.title;
+        await track.save();
+        count++;
+    }
+
+    res.json({message: `Successfully created ${count} tracks`});
 });
 
 app.use('/api2/users', async (req, res, next) => {
-    let users = await User.find({});
-    res.send(users.map(user => user.username))
+    let tracks = await Track.find({});
+    res.send(tracks.map(track => track.title))
 });
 
 app.get('*', async (req, res) => {

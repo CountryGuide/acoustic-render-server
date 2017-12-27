@@ -3,13 +3,19 @@ import express from "express";
 import compression from 'compression';
 import logger from 'morgan';
 import proxy from 'express-http-proxy';
+import mongoose from 'mongoose';
 import { render } from './helper/renderer';
 import { storeCreator } from './helper/createStore';
 import { Routes } from './client/Routes';
 import { matchRoutes } from 'react-router-config';
+import { UserSchema } from './models/Users';
+
+mongoose.Promise = global.Promise;
 
 const PORT = 3000;
 const app  = express();
+
+const User = mongoose.model('User');
 
 app.use('/api', proxy('http://react-ssr-api.herokuapp.com/', {
     proxyReqOptDecorator (opts) {
@@ -21,6 +27,23 @@ app.use(compression());
 app.use(logger('dev'));
 
 app.use(express.static('public'));
+
+mongoose.connect('mongodb://localhost/react_ssr', { useMongoClient: true });
+mongoose.set('debug', true);
+
+app.use('/api2/newuser', async function (req, res, next) {
+    const user = new User();
+
+    user.username = 'unknown user';
+    await user.save();
+
+    res.json({message: `Successfully created ${user.username}`});
+});
+
+app.use('/api2/users', async (req, res, next) => {
+    let users = await User.find({});
+    res.send(users.map(user => user.username))
+});
 
 app.get('*', async (req, res) => {
     const store = storeCreator(req);

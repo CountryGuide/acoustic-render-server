@@ -316,7 +316,7 @@ app.use(_bodyParser2.default.json());
 
 app.use(_express2.default.static('public'));
 
-app.get('/', function () {
+app.get('*', function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
         var store, promises, context, content;
         return regeneratorRuntime.wrap(function _callee$(_context) {

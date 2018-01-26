@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-app.get('/', async (req, res) => {
+app.get('*', async (req, res) => {
     const store = storeCreator(req);
 
     const promises = matchRoutes(Routes, req.url)

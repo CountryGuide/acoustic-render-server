@@ -95,7 +95,7 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
                     switch (_context.prev = _context.next) {
                         case 0:
                             _context.next = 2;
-                            return api.get('/users');
+                            return api.get('/generate');
 
                         case 2:
                             res = _context.sent;

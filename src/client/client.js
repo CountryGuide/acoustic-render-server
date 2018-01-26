@@ -12,7 +12,7 @@ import { renderRoutes } from 'react-router-config';
 
 
 const axiosInstance = axios.create({
-    baseURL: '/api'
+    baseURL: 'https://acoustic-api.herokuapp.com'
 });
 
 const store = createStore(

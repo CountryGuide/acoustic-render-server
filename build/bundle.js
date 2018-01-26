@@ -294,6 +294,14 @@ var _bodyParser = __webpack_require__(13);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
+var _serveFavicon = __webpack_require__(33);
+
+var _serveFavicon2 = _interopRequireDefault(_serveFavicon);
+
+var _path = __webpack_require__(32);
+
+var _path2 = _interopRequireDefault(_path);
+
 var _renderer = __webpack_require__(14);
 
 var _createStore = __webpack_require__(25);
@@ -313,7 +321,7 @@ app.use((0, _compression2.default)());
 app.use((0, _morgan2.default)('dev'));
 app.use(_bodyParser2.default.urlencoded({ extended: false }));
 app.use(_bodyParser2.default.json());
-
+app.use((0, _serveFavicon2.default)(_path2.default.join('src', 'favicon', 'favicon.ico')));
 app.use(_express2.default.static('public'));
 
 app.get('*', function () {
@@ -517,7 +525,24 @@ var App = function App(_ref) {
             _react2.default.createElement('link', { rel: 'stylesheet', type: 'text/css', href: 'styles/main.css' }),
             _react2.default.createElement('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js' }),
             _react2.default.createElement('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js' }),
-            _react2.default.createElement('link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/css/uikit.min.css' })
+            _react2.default.createElement('link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/css/uikit.min.css' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '57x57', href: 'favicon/apple-icon-57x57.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '60x60', href: 'favicon/apple-icon-60x60.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '72x72', href: 'favicon/apple-icon-72x72.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '76x76', href: 'favicon/apple-icon-76x76.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '114x114', href: 'favicon/apple-icon-114x114.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '120x120', href: 'favicon/apple-icon-120x120.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '144x144', href: 'favicon/apple-icon-144x144.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '152x152', href: 'favicon/apple-icon-152x152.png' }),
+            _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '180x180', href: 'favicon/apple-icon-180x180.png' }),
+            _react2.default.createElement('link', { rel: 'icon', type: 'image/png', sizes: '192x192', href: 'favicon/android-icon-192x192.png' }),
+            _react2.default.createElement('link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: 'favicon/favicon-32x32.png' }),
+            _react2.default.createElement('link', { rel: 'icon', type: 'image/png', sizes: '96x96', href: 'favicon/favicon-96x96.png' }),
+            _react2.default.createElement('link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: 'favicon/favicon-16x16.png' }),
+            _react2.default.createElement('link', { rel: 'manifest', href: 'favicon/manifest.json' }),
+            _react2.default.createElement('meta', { name: 'msapplication-TileColor', content: '#ffffff' }),
+            _react2.default.createElement('meta', { name: 'msapplication-TileImage', content: '/ms-icon-144x144.png' }),
+            _react2.default.createElement('meta', { name: 'theme-color', content: '#ffffff' })
         ),
         _react2.default.createElement(_Header2.default, null),
         (0, _reactRouterConfig.renderRoutes)(route.routes),
@@ -1171,6 +1196,266 @@ function admins() {
             return state;
     }
 }
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * serve-favicon
+ * Copyright(c) 2010 Sencha Inc.
+ * Copyright(c) 2011 TJ Holowaychuk
+ * Copyright(c) 2014-2017 Douglas Christopher Wilson
+ * MIT Licensed
+ */
+
+
+
+/**
+ * Module dependencies.
+ * @private
+ */
+
+var Buffer = __webpack_require__(34).Buffer
+var etag = __webpack_require__(35)
+var fresh = __webpack_require__(36)
+var fs = __webpack_require__(37)
+var ms = __webpack_require__(38)
+var parseUrl = __webpack_require__(39)
+var path = __webpack_require__(32)
+var resolve = path.resolve
+
+/**
+ * Module exports.
+ * @public
+ */
+
+module.exports = favicon
+
+/**
+ * Module variables.
+ * @private
+ */
+
+var ONE_YEAR_MS = 60 * 60 * 24 * 365 * 1000 // 1 year
+
+/**
+ * Serves the favicon located by the given `path`.
+ *
+ * @public
+ * @param {String|Buffer} path
+ * @param {Object} [options]
+ * @return {Function} middleware
+ */
+
+function favicon (path, options) {
+  var opts = options || {}
+
+  var icon // favicon cache
+  var maxAge = calcMaxAge(opts.maxAge)
+
+  if (!path) {
+    throw new TypeError('path to favicon.ico is required')
+  }
+
+  if (Buffer.isBuffer(path)) {
+    icon = createIcon(Buffer.from(path), maxAge)
+  } else if (typeof path === 'string') {
+    path = resolveSync(path)
+  } else {
+    throw new TypeError('path to favicon.ico must be string or buffer')
+  }
+
+  return function favicon (req, res, next) {
+    if (parseUrl(req).pathname !== '/favicon.ico') {
+      next()
+      return
+    }
+
+    if (req.method !== 'GET' && req.method !== 'HEAD') {
+      res.statusCode = req.method === 'OPTIONS' ? 200 : 405
+      res.setHeader('Allow', 'GET, HEAD, OPTIONS')
+      res.setHeader('Content-Length', '0')
+      res.end()
+      return
+    }
+
+    if (icon) {
+      send(req, res, icon)
+      return
+    }
+
+    fs.readFile(path, function (err, buf) {
+      if (err) return next(err)
+      icon = createIcon(buf, maxAge)
+      send(req, res, icon)
+    })
+  }
+}
+
+/**
+ * Calculate the max-age from a configured value.
+ *
+ * @private
+ * @param {string|number} val
+ * @return {number}
+ */
+
+function calcMaxAge (val) {
+  var num = typeof val === 'string'
+    ? ms(val)
+    : val
+
+  return num != null
+    ? Math.min(Math.max(0, num), ONE_YEAR_MS)
+    : ONE_YEAR_MS
+}
+
+/**
+ * Create icon data from Buffer and max-age.
+ *
+ * @private
+ * @param {Buffer} buf
+ * @param {number} maxAge
+ * @return {object}
+ */
+
+function createIcon (buf, maxAge) {
+  return {
+    body: buf,
+    headers: {
+      'Cache-Control': 'public, max-age=' + Math.floor(maxAge / 1000),
+      'ETag': etag(buf)
+    }
+  }
+}
+
+/**
+ * Create EISDIR error.
+ *
+ * @private
+ * @param {string} path
+ * @return {Error}
+ */
+
+function createIsDirError (path) {
+  var error = new Error('EISDIR, illegal operation on directory \'' + path + '\'')
+  error.code = 'EISDIR'
+  error.errno = 28
+  error.path = path
+  error.syscall = 'open'
+  return error
+}
+
+/**
+ * Determine if the cached representation is fresh.
+ *
+ * @param {object} req
+ * @param {object} res
+ * @return {boolean}
+ * @private
+ */
+
+function isFresh (req, res) {
+  return fresh(req.headers, {
+    'etag': res.getHeader('ETag'),
+    'last-modified': res.getHeader('Last-Modified')
+  })
+}
+
+/**
+ * Resolve the path to icon.
+ *
+ * @param {string} iconPath
+ * @private
+ */
+
+function resolveSync (iconPath) {
+  var path = resolve(iconPath)
+  var stat = fs.statSync(path)
+
+  if (stat.isDirectory()) {
+    throw createIsDirError(path)
+  }
+
+  return path
+}
+
+/**
+ * Send icon data in response to a request.
+ *
+ * @private
+ * @param {IncomingMessage} req
+ * @param {OutgoingMessage} res
+ * @param {object} icon
+ */
+
+function send (req, res, icon) {
+  // Set headers
+  var headers = icon.headers
+  var keys = Object.keys(headers)
+  for (var i = 0; i < keys.length; i++) {
+    var key = keys[i]
+    res.setHeader(key, headers[key])
+  }
+
+  // Validate freshness
+  if (isFresh(req, res)) {
+    res.statusCode = 304
+    res.end()
+    return
+  }
+
+  // Send icon
+  res.statusCode = 200
+  res.setHeader('Content-Length', icon.body.length)
+  res.setHeader('Content-Type', 'image/x-icon')
+  res.end(icon.body)
+}
+
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+module.exports = require("safe-buffer");
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+module.exports = require("etag");
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
+
+module.exports = require("fresh");
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports) {
+
+module.exports = require("ms");
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+module.exports = require("parseurl");
 
 /***/ })
 /******/ ]);

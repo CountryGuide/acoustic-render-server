@@ -3,6 +3,8 @@ import express from "express";
 import compression from 'compression';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import favicon from 'serve-favicon';
+import path from 'path';
 import { render } from './helper/renderer';
 import { storeCreator } from './helper/createStore';
 import { Routes } from './client/Routes';
@@ -15,7 +17,7 @@ app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use(favicon(path.join('src', 'favicon', 'favicon.ico')));
 app.use(express.static('public'));
 
 app.get('*', async (req, res) => {

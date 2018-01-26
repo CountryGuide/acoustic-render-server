@@ -8,6 +8,11 @@ gulp.task('default', () => {
         .pipe(gulp.dest('public/styles/'));
 });
 
+gulp.task('favicon', () => {
+    return gulp.src('src/favicon/**/*.**')
+        .pipe(gulp.dest('public/favicon'));
+});
+
 gulp.task('watchStyles', () => {
     gulp.watch('src/styles/**/*.css', gulp.series('default'));
 });

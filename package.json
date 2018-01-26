@@ -1,59 +1,61 @@
 {
-    "name": "server",
-    "version": "1.0.0",
-    "description": "",
-    "engines": {
-        "node": "8.9.1"
-    },
-    "main": "build/bundle.js",
-    "repository": {
-        "type": "git",
-        "url": "https://git.heroku.com/acoustic.git"
-    },
-    "scripts": {
-        "dev": "npm-run-all --parallel dev:*",
-        "dev:watch-server": "webpack --config webpack.server.js -w",
-        "dev:watch-client": "webpack --config webpack.client.js -w",
-        "start": "node build/bundle.js"
-    },
-    "author": "Ivan Yakovlev",
-    "license": "MIT",
-    "dependencies": {
-        "axios": "^0.17.1",
-        "babel-cli": "^6.26.0",
-        "babel-core": "^6.26.0",
-        "babel-loader": "^7.1.2",
-        "babel-polyfill": "^6.26.0",
-        "babel-preset-env": "^1.6.0",
-        "babel-preset-react": "^6.24.1",
-        "babel-preset-stage-0": "^6.24.1",
-        "body-parser": "^1.18.2",
-        "compression": "^1.7.0",
-        "errorhandler": "^1.5.0",
-        "express": "^4.15.4",
-        "morgan": "^1.9.0",
-        "react": "^16.0.0",
-        "react-dom": "^16.0.0",
-        "react-helmet": "^5.2.0",
-        "react-redux": "^5.0.6",
-        "react-router-config": "^1.0.0-beta.4",
-        "react-router-dom": "^4.2.2",
-        "redux": "^3.7.2",
-        "redux-thunk": "^2.2.0",
-        "serialize-javascript": "^1.4.0",
-        "uikit": "^3.0.0-beta.38"
-    },
-    "devDependencies": {
-        "autoprefixer": "^7.2.3",
-        "concurrently": "^3.5.0",
-        "gulp": "^4.0.0",
-        "gulp-postcss": "^7.0.0",
-        "nodemon": "^1.12.1",
-        "npm-run-all": "^4.1.1",
-        "precss": "^2.0.0",
-        "webpack": "^3.5.6",
-        "webpack-dev-server": "^2.8.2",
-        "webpack-merge": "^4.1.0",
-        "webpack-node-externals": "^1.6.0"
-    }
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": "8.9.1"
+  },
+  "main": "build/bundle.js",
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/acoustic.git"
+  },
+  "scripts": {
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:watch-server": "webpack --config webpack.server.js -w",
+    "dev:watch-client": "webpack --config webpack.client.js -w",
+    "start": "node build/bundle.js",
+      "server": "nodemon --watch build --exec \"node build/bundle.js\""
+  },
+  "author": "Ivan Yakovlev",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.15.4",
+    "morgan": "^1.9.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "serialize-javascript": "^1.4.0",
+    "serve-favicon": "^2.4.5",
+    "uikit": "^3.0.0-beta.38"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.3",
+    "concurrently": "^3.5.0",
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^7.0.0",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.1",
+    "precss": "^2.0.0",
+    "webpack": "^3.5.6",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0",
+    "webpack-node-externals": "^1.6.0"
+  }
 }

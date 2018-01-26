@@ -8,7 +8,7 @@ import { storeCreator } from './helper/createStore';
 import { Routes } from './client/Routes';
 import { matchRoutes } from 'react-router-config';
 
-const PORT = process.ENV.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 const app  = express();
 
 app.use(compression());

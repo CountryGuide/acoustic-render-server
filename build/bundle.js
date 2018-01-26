@@ -230,23 +230,23 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _App = __webpack_require__(17);
+var _App = __webpack_require__(19);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _HomePage = __webpack_require__(20);
+var _HomePage = __webpack_require__(22);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UsersPage = __webpack_require__(21);
+var _UsersPage = __webpack_require__(23);
 
 var _UsersPage2 = _interopRequireDefault(_UsersPage);
 
-var _NotFoundPage = __webpack_require__(22);
+var _NotFoundPage = __webpack_require__(24);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _AdminsPage = __webpack_require__(23);
+var _AdminsPage = __webpack_require__(25);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
@@ -294,17 +294,17 @@ var _bodyParser = __webpack_require__(13);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _serveFavicon = __webpack_require__(33);
+var _serveFavicon = __webpack_require__(14);
 
 var _serveFavicon2 = _interopRequireDefault(_serveFavicon);
 
-var _path = __webpack_require__(32);
+var _path = __webpack_require__(15);
 
 var _path2 = _interopRequireDefault(_path);
 
-var _renderer = __webpack_require__(14);
+var _renderer = __webpack_require__(16);
 
-var _createStore = __webpack_require__(25);
+var _createStore = __webpack_require__(27);
 
 var _Routes = __webpack_require__(6);
 
@@ -413,6 +413,18 @@ module.exports = require("body-parser");
 
 /***/ }),
 /* 14 */
+/***/ (function(module, exports) {
+
+module.exports = require("serve-favicon");
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -427,11 +439,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(15);
+var _server = __webpack_require__(17);
 
 var ReactDOMServer = _interopRequireWildcard(_server);
 
-var _serializeJavascript = __webpack_require__(16);
+var _serializeJavascript = __webpack_require__(18);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
@@ -470,19 +482,19 @@ function render(req, store, context) {
 }
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("serialize-javascript");
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -498,7 +510,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterConfig = __webpack_require__(5);
 
-var _Header = __webpack_require__(18);
+var _Header = __webpack_require__(20);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -506,7 +518,7 @@ var _actions = __webpack_require__(1);
 
 var _reactHelmet = __webpack_require__(2);
 
-var _Footer = __webpack_require__(19);
+var _Footer = __webpack_require__(21);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -559,7 +571,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -632,7 +644,7 @@ function mapStateToProps(_ref2) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -663,7 +675,7 @@ var Footer = function Footer() {
 exports.default = Footer;
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -708,7 +720,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -805,7 +817,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -858,7 +870,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -878,7 +890,7 @@ var _reactRedux = __webpack_require__(3);
 
 var _index = __webpack_require__(1);
 
-var _requireAuth = __webpack_require__(24);
+var _requireAuth = __webpack_require__(26);
 
 var _requireAuth2 = _interopRequireDefault(_requireAuth);
 
@@ -975,7 +987,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1044,7 +1056,7 @@ exports.default = function (ChildComponent) {
 };
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1057,15 +1069,15 @@ exports.storeCreator = storeCreator;
 
 var _redux = __webpack_require__(7);
 
-var _reduxThunk = __webpack_require__(26);
+var _reduxThunk = __webpack_require__(28);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(27);
+var _axios = __webpack_require__(29);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _reducers = __webpack_require__(28);
+var _reducers = __webpack_require__(30);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1079,19 +1091,19 @@ function storeCreator(req) {
 }
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1104,11 +1116,11 @@ exports.combinedReducers = undefined;
 
 var _redux = __webpack_require__(7);
 
-var _users = __webpack_require__(29);
+var _users = __webpack_require__(31);
 
-var _auth = __webpack_require__(30);
+var _auth = __webpack_require__(32);
 
-var _admins = __webpack_require__(31);
+var _admins = __webpack_require__(33);
 
 var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
     users: _users.users,
@@ -1117,7 +1129,7 @@ var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1146,7 +1158,7 @@ function users() {
 }
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1172,7 +1184,7 @@ function auth() {
 }
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1196,266 +1208,6 @@ function admins() {
             return state;
     }
 }
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*!
- * serve-favicon
- * Copyright(c) 2010 Sencha Inc.
- * Copyright(c) 2011 TJ Holowaychuk
- * Copyright(c) 2014-2017 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-
-
-/**
- * Module dependencies.
- * @private
- */
-
-var Buffer = __webpack_require__(34).Buffer
-var etag = __webpack_require__(35)
-var fresh = __webpack_require__(36)
-var fs = __webpack_require__(37)
-var ms = __webpack_require__(38)
-var parseUrl = __webpack_require__(39)
-var path = __webpack_require__(32)
-var resolve = path.resolve
-
-/**
- * Module exports.
- * @public
- */
-
-module.exports = favicon
-
-/**
- * Module variables.
- * @private
- */
-
-var ONE_YEAR_MS = 60 * 60 * 24 * 365 * 1000 // 1 year
-
-/**
- * Serves the favicon located by the given `path`.
- *
- * @public
- * @param {String|Buffer} path
- * @param {Object} [options]
- * @return {Function} middleware
- */
-
-function favicon (path, options) {
-  var opts = options || {}
-
-  var icon // favicon cache
-  var maxAge = calcMaxAge(opts.maxAge)
-
-  if (!path) {
-    throw new TypeError('path to favicon.ico is required')
-  }
-
-  if (Buffer.isBuffer(path)) {
-    icon = createIcon(Buffer.from(path), maxAge)
-  } else if (typeof path === 'string') {
-    path = resolveSync(path)
-  } else {
-    throw new TypeError('path to favicon.ico must be string or buffer')
-  }
-
-  return function favicon (req, res, next) {
-    if (parseUrl(req).pathname !== '/favicon.ico') {
-      next()
-      return
-    }
-
-    if (req.method !== 'GET' && req.method !== 'HEAD') {
-      res.statusCode = req.method === 'OPTIONS' ? 200 : 405
-      res.setHeader('Allow', 'GET, HEAD, OPTIONS')
-      res.setHeader('Content-Length', '0')
-      res.end()
-      return
-    }
-
-    if (icon) {
-      send(req, res, icon)
-      return
-    }
-
-    fs.readFile(path, function (err, buf) {
-      if (err) return next(err)
-      icon = createIcon(buf, maxAge)
-      send(req, res, icon)
-    })
-  }
-}
-
-/**
- * Calculate the max-age from a configured value.
- *
- * @private
- * @param {string|number} val
- * @return {number}
- */
-
-function calcMaxAge (val) {
-  var num = typeof val === 'string'
-    ? ms(val)
-    : val
-
-  return num != null
-    ? Math.min(Math.max(0, num), ONE_YEAR_MS)
-    : ONE_YEAR_MS
-}
-
-/**
- * Create icon data from Buffer and max-age.
- *
- * @private
- * @param {Buffer} buf
- * @param {number} maxAge
- * @return {object}
- */
-
-function createIcon (buf, maxAge) {
-  return {
-    body: buf,
-    headers: {
-      'Cache-Control': 'public, max-age=' + Math.floor(maxAge / 1000),
-      'ETag': etag(buf)
-    }
-  }
-}
-
-/**
- * Create EISDIR error.
- *
- * @private
- * @param {string} path
- * @return {Error}
- */
-
-function createIsDirError (path) {
-  var error = new Error('EISDIR, illegal operation on directory \'' + path + '\'')
-  error.code = 'EISDIR'
-  error.errno = 28
-  error.path = path
-  error.syscall = 'open'
-  return error
-}
-
-/**
- * Determine if the cached representation is fresh.
- *
- * @param {object} req
- * @param {object} res
- * @return {boolean}
- * @private
- */
-
-function isFresh (req, res) {
-  return fresh(req.headers, {
-    'etag': res.getHeader('ETag'),
-    'last-modified': res.getHeader('Last-Modified')
-  })
-}
-
-/**
- * Resolve the path to icon.
- *
- * @param {string} iconPath
- * @private
- */
-
-function resolveSync (iconPath) {
-  var path = resolve(iconPath)
-  var stat = fs.statSync(path)
-
-  if (stat.isDirectory()) {
-    throw createIsDirError(path)
-  }
-
-  return path
-}
-
-/**
- * Send icon data in response to a request.
- *
- * @private
- * @param {IncomingMessage} req
- * @param {OutgoingMessage} res
- * @param {object} icon
- */
-
-function send (req, res, icon) {
-  // Set headers
-  var headers = icon.headers
-  var keys = Object.keys(headers)
-  for (var i = 0; i < keys.length; i++) {
-    var key = keys[i]
-    res.setHeader(key, headers[key])
-  }
-
-  // Validate freshness
-  if (isFresh(req, res)) {
-    res.statusCode = 304
-    res.end()
-    return
-  }
-
-  // Send icon
-  res.statusCode = 200
-  res.setHeader('Content-Length', icon.body.length)
-  res.setHeader('Content-Type', 'image/x-icon')
-  res.end(icon.body)
-}
-
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports) {
-
-module.exports = require("safe-buffer");
-
-/***/ }),
-/* 35 */
-/***/ (function(module, exports) {
-
-module.exports = require("etag");
-
-/***/ }),
-/* 36 */
-/***/ (function(module, exports) {
-
-module.exports = require("fresh");
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
-/* 38 */
-/***/ (function(module, exports) {
-
-module.exports = require("ms");
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports) {
-
-module.exports = require("parseurl");
 
 /***/ })
 /******/ ]);

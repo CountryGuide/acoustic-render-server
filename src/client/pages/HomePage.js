@@ -3,7 +3,7 @@ import {Helmet} from "react-helmet";
 
 const HomePage = () => {
     return (
-        <div className={'center-align'} style={{ marginTop: '200px' }}>
+        <div>
             <Helmet>
                 <title>React SSR</title>
                 <meta property={'og:title'} content={'React SSR'}/>

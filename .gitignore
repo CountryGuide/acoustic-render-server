@@ -1,5 +1,7 @@
 .idea
 **/node_modules
-**/public
-**/src/certificates
-**/build
+src
+gulpfile.js
+webpack.base.js
+webpack.client.js
+webpack.server.js

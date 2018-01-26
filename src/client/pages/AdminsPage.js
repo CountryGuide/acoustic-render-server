@@ -11,7 +11,7 @@ class AdminsPage extends React.Component {
     }
 
     renderAdmins() {
-        return this.props.admins.map(admin => <li className={'collection-item'} key={admin.id}>{admin.name}</li>);
+        return this.props.admins.map(admin => <li key={admin.id}>{admin.name}</li>);
     }
 
     head() {
@@ -27,8 +27,8 @@ class AdminsPage extends React.Component {
         return (
             <div>
                 {this.head()}
-                <ul className={'collection with-header'}>
-                    <li className={'collection-header'}><h3>List of Admins</h3></li>
+                <ul>
+                    <li><h3>List of Admins</h3></li>
                     {this.renderAdmins()}
                 </ul>
             </div>

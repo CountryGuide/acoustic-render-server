@@ -5,7 +5,7 @@ import {Helmet} from "react-helmet";
 const NotFoundPage = ({ staticContext = {} }) => {
     staticContext.notFound = true;
     return (
-        <div className={'center-align'} style={{ marginTop: '200px' }}>
+        <div>
             <Helmet>
                 <title>Page not found</title>
             </Helmet>

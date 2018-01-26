@@ -9,5 +9,5 @@ gulp.task('default', () => {
 });
 
 gulp.task('watchStyles', () => {
-    gulp.watch('src/styles/**/*.css', ['default']);
+    gulp.watch('src/styles/**/*.css', gulp.series('default'));
 });

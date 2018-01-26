@@ -1,0 +1,18 @@
+.application {
+    display: grid;
+    grid-template-areas: "header" "main" "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.application > div:first-of-type {
+    grid-area: main;
+}
+
+.header {
+    grid-area: header;
+}
+
+.footer {
+    grid-area: footer;
+}

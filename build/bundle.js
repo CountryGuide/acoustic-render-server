@@ -234,19 +234,19 @@ var _App = __webpack_require__(17);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _HomePage = __webpack_require__(19);
+var _HomePage = __webpack_require__(20);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UsersPage = __webpack_require__(20);
+var _UsersPage = __webpack_require__(21);
 
 var _UsersPage2 = _interopRequireDefault(_UsersPage);
 
-var _NotFoundPage = __webpack_require__(21);
+var _NotFoundPage = __webpack_require__(22);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _AdminsPage = __webpack_require__(22);
+var _AdminsPage = __webpack_require__(23);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
@@ -296,7 +296,7 @@ var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
 var _renderer = __webpack_require__(14);
 
-var _createStore = __webpack_require__(24);
+var _createStore = __webpack_require__(25);
 
 var _Routes = __webpack_require__(6);
 
@@ -498,7 +498,7 @@ var _actions = __webpack_require__(1);
 
 var _reactHelmet = __webpack_require__(2);
 
-var _Footer = __webpack_require__(31);
+var _Footer = __webpack_require__(19);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -621,6 +621,37 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer() {
+    return _react2.default.createElement(
+        "div",
+        { className: "uk-background-secondary uk-light uk-padding uk-panel footer" },
+        _react2.default.createElement(
+            "p",
+            { className: "uk-h4" },
+            "Secondary"
+        )
+    );
+};
+
+exports.default = Footer;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
 var _reactHelmet = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -652,7 +683,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -749,7 +780,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -802,7 +833,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -822,7 +853,7 @@ var _reactRedux = __webpack_require__(3);
 
 var _index = __webpack_require__(1);
 
-var _requireAuth = __webpack_require__(23);
+var _requireAuth = __webpack_require__(24);
 
 var _requireAuth2 = _interopRequireDefault(_requireAuth);
 
@@ -919,7 +950,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -988,7 +1019,7 @@ exports.default = function (ChildComponent) {
 };
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1001,15 +1032,15 @@ exports.storeCreator = storeCreator;
 
 var _redux = __webpack_require__(7);
 
-var _reduxThunk = __webpack_require__(25);
+var _reduxThunk = __webpack_require__(26);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(26);
+var _axios = __webpack_require__(27);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _reducers = __webpack_require__(27);
+var _reducers = __webpack_require__(28);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1023,19 +1054,19 @@ function storeCreator(req) {
 }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1048,11 +1079,11 @@ exports.combinedReducers = undefined;
 
 var _redux = __webpack_require__(7);
 
-var _users = __webpack_require__(28);
+var _users = __webpack_require__(29);
 
-var _auth = __webpack_require__(29);
+var _auth = __webpack_require__(30);
 
-var _admins = __webpack_require__(30);
+var _admins = __webpack_require__(31);
 
 var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
     users: _users.users,
@@ -1061,7 +1092,7 @@ var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1078,7 +1109,7 @@ function users() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
-    console.log(action);
+    // console.log(action);
     switch (action.type) {
         case _actions.FETCH_USERS:
             return action.payload.data;
@@ -1090,7 +1121,7 @@ function users() {
 }
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1116,7 +1147,7 @@ function auth() {
 }
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1140,37 +1171,6 @@ function admins() {
             return state;
     }
 }
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Footer = function Footer() {
-    return _react2.default.createElement(
-        "div",
-        { className: "uk-background-secondary uk-light uk-padding uk-panel footer" },
-        _react2.default.createElement(
-            "p",
-            { className: "uk-h4" },
-            "Secondary"
-        )
-    );
-};
-
-exports.default = Footer;
 
 /***/ })
 /******/ ]);

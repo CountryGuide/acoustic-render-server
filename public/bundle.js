@@ -8736,7 +8736,7 @@ var _reactRouterDom = __webpack_require__(114);
 
 var _Routes = __webpack_require__(470);
 
-var _reducers = __webpack_require__(490);
+var _reducers = __webpack_require__(491);
 
 var _reactRouterConfig = __webpack_require__(184);
 
@@ -36583,19 +36583,19 @@ var _App = __webpack_require__(471);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _HomePage = __webpack_require__(485);
+var _HomePage = __webpack_require__(486);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UsersPage = __webpack_require__(486);
+var _UsersPage = __webpack_require__(487);
 
 var _UsersPage2 = _interopRequireDefault(_UsersPage);
 
-var _NotFoundPage = __webpack_require__(487);
+var _NotFoundPage = __webpack_require__(488);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _AdminsPage = __webpack_require__(488);
+var _AdminsPage = __webpack_require__(489);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
@@ -36637,7 +36637,7 @@ var _actions = __webpack_require__(54);
 
 var _reactHelmet = __webpack_require__(63);
 
-var _Footer = __webpack_require__(494);
+var _Footer = __webpack_require__(485);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -38132,6 +38132,37 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Footer = function Footer() {
+    return _react2.default.createElement(
+        "div",
+        { className: "uk-background-secondary uk-light uk-padding uk-panel footer" },
+        _react2.default.createElement(
+            "p",
+            { className: "uk-h4" },
+            "Secondary"
+        )
+    );
+};
+
+exports.default = Footer;
+
+/***/ }),
+/* 486 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(3);
+
+var _react2 = _interopRequireDefault(_react);
+
 var _reactHelmet = __webpack_require__(63);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -38163,7 +38194,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 486 */
+/* 487 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38260,7 +38291,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 487 */
+/* 488 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38313,7 +38344,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 488 */
+/* 489 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38333,7 +38364,7 @@ var _reactRedux = __webpack_require__(60);
 
 var _index = __webpack_require__(54);
 
-var _requireAuth = __webpack_require__(489);
+var _requireAuth = __webpack_require__(490);
 
 var _requireAuth2 = _interopRequireDefault(_requireAuth);
 
@@ -38430,7 +38461,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 489 */
+/* 490 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38499,7 +38530,7 @@ exports.default = function (ChildComponent) {
 };
 
 /***/ }),
-/* 490 */
+/* 491 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38512,11 +38543,11 @@ exports.combinedReducers = undefined;
 
 var _redux = __webpack_require__(111);
 
-var _users = __webpack_require__(491);
+var _users = __webpack_require__(492);
 
-var _auth = __webpack_require__(492);
+var _auth = __webpack_require__(493);
 
-var _admins = __webpack_require__(493);
+var _admins = __webpack_require__(494);
 
 var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
     users: _users.users,
@@ -38525,7 +38556,7 @@ var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
 });
 
 /***/ }),
-/* 491 */
+/* 492 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38542,7 +38573,7 @@ function users() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
     var action = arguments[1];
 
-    console.log(action);
+    // console.log(action);
     switch (action.type) {
         case _actions.FETCH_USERS:
             return action.payload.data;
@@ -38554,7 +38585,7 @@ function users() {
 }
 
 /***/ }),
-/* 492 */
+/* 493 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38580,7 +38611,7 @@ function auth() {
 }
 
 /***/ }),
-/* 493 */
+/* 494 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38604,37 +38635,6 @@ function admins() {
             return state;
     }
 }
-
-/***/ }),
-/* 494 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(3);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Footer = function Footer() {
-    return _react2.default.createElement(
-        "div",
-        { className: "uk-background-secondary uk-light uk-padding uk-panel footer" },
-        _react2.default.createElement(
-            "p",
-            { className: "uk-h4" },
-            "Secondary"
-        )
-    );
-};
-
-exports.default = Footer;
 
 /***/ })
 /******/ ]);

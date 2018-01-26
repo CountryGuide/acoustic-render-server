@@ -1,7 +1,7 @@
 import { FETCH_USERS } from '../actions';
 
 export function users(state=[], action) {
-    console.log(action);
+    // console.log(action);
     switch (action.type) {
         case FETCH_USERS:
             return action.payload.data;

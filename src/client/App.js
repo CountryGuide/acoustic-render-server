@@ -34,7 +34,9 @@ const App = ({route}) => {
                 <meta name="theme-color" content="#ffffff"/>
             </Helmet>
             <Header/>
-            {renderRoutes(route.routes)}
+            <div className='content'>
+                {renderRoutes(route.routes)}
+            </div>
             <Footer/>
         </div>
     );

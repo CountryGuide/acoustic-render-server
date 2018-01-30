@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import UsersPage from './pages/UsersPage';
 import NotFoundPage from "./pages/NotFoundPage";
 import AdminsPage from "./pages/AdminsPage";
+import ReportPage from "./pages/ReportPage";
 
 
 export const Routes =  [
@@ -22,6 +23,10 @@ export const Routes =  [
             {
                 ...AdminsPage,
                 path: '/admins'
+            },
+            {
+                ...ReportPage,
+                path: '/report'
             },
             {
                 ...NotFoundPage

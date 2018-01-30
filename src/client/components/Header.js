@@ -10,7 +10,7 @@ const Header = ({ auth }) => {
             <div className="uk-navbar-left">
                 <Link className="uk-navbar-item uk-logo" to='/'>AR</Link>
                 <ul className="uk-navbar-nav">
-                    <li><Link to='/users'>New report</Link></li>
+                    <li><Link to='/report'>New report</Link></li>
                     {adminsRoute()}
                 </ul>
             </div>

@@ -250,6 +250,10 @@ var _AdminsPage = __webpack_require__(25);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
+var _ReportPage = __webpack_require__(34);
+
+var _ReportPage2 = _interopRequireDefault(_ReportPage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Routes = exports.Routes = [_extends({}, _App2.default, {
@@ -260,6 +264,8 @@ var Routes = exports.Routes = [_extends({}, _App2.default, {
         path: '/users'
     }), _extends({}, _AdminsPage2.default, {
         path: '/admins'
+    }), _extends({}, _ReportPage2.default, {
+        path: '/report'
     }), _extends({}, _NotFoundPage2.default)]
 })];
 
@@ -557,7 +563,11 @@ var App = function App(_ref) {
             _react2.default.createElement('meta', { name: 'theme-color', content: '#ffffff' })
         ),
         _react2.default.createElement(_Header2.default, null),
-        (0, _reactRouterConfig.renderRoutes)(route.routes),
+        _react2.default.createElement(
+            'div',
+            { className: 'content' },
+            (0, _reactRouterConfig.renderRoutes)(route.routes)
+        ),
         _react2.default.createElement(_Footer2.default, null)
     );
 };
@@ -625,7 +635,7 @@ var Header = function Header(_ref) {
                     null,
                     _react2.default.createElement(
                         _reactRouterDom.Link,
-                        { to: '/users' },
+                        { to: '/report' },
                         'New report'
                     )
                 ),
@@ -1209,5 +1219,174 @@ function admins() {
     }
 }
 
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RTInput = function RTInput() {
+    return _react2.default.createElement(
+        "div",
+        { className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+        _react2.default.createElement(
+            "label",
+            { className: "uk-form-label" },
+            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.01", min: "0" }),
+            _react2.default.createElement(
+                "span",
+                null,
+                "100"
+            )
+        )
+    );
+};
+
+var ReportPage = function (_React$Component) {
+    _inherits(ReportPage, _React$Component);
+
+    function ReportPage() {
+        _classCallCheck(this, ReportPage);
+
+        return _possibleConstructorReturn(this, (ReportPage.__proto__ || Object.getPrototypeOf(ReportPage)).apply(this, arguments));
+    }
+
+    _createClass(ReportPage, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "form",
+                { className: "uk-padding-small", "data-uk-grid": true },
+                _react2.default.createElement(
+                    "fieldset",
+                    { className: "uk-fieldset" },
+                    _react2.default.createElement(
+                        "legend",
+                        { className: "uk-legend" },
+                        "Reverberation time, Hz"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { "data-uk-grid": true },
+                        _react2.default.createElement(
+                            "div",
+                            null,
+                            _react2.default.createElement(RTInput, null)
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            null,
+                            _react2.default.createElement(RTInput, null)
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    "fieldset",
+                    { className: "uk-fieldset" },
+                    _react2.default.createElement(
+                        "legend",
+                        { className: "uk-legend" },
+                        "Parameters"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        {
+                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+                        _react2.default.createElement(
+                            "label",
+                            { className: "uk-form-label" },
+                            _react2.default.createElement("input", { className: "uk-checkbox", type: "checkbox" }),
+                            _react2.default.createElement(
+                                "span",
+                                null,
+                                "Air mode"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        {
+                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+                        _react2.default.createElement(
+                            "label",
+                            { className: "uk-form-label" },
+                            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.1",
+                                min: "0" }),
+                            _react2.default.createElement(
+                                "span",
+                                null,
+                                "Volume"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        {
+                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+                        _react2.default.createElement(
+                            "label",
+                            { className: "uk-form-label" },
+                            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.1",
+                                min: "0" }),
+                            _react2.default.createElement(
+                                "span",
+                                null,
+                                "Square"
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        {
+                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+                        _react2.default.createElement(
+                            "label",
+                            { className: "uk-form-label" },
+                            _react2.default.createElement(
+                                "div",
+                                { "data-uk-form-custom": "target: true" },
+                                _react2.default.createElement("input", { type: "file" }),
+                                _react2.default.createElement("input", { className: "uk-input uk-form-small uk-form-width-small", type: "text",
+                                    placeholder: "Select file", disabled: true }),
+                                _react2.default.createElement(
+                                    "span",
+                                    null,
+                                    "Data source"
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return ReportPage;
+}(_react2.default.Component);
+
+exports.default = {
+    component: ReportPage
+};
+
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map

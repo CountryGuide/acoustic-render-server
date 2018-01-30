@@ -12,8 +12,8 @@ const App = ({route}) => {
             <Helmet>
                 <meta name={'viewport'} content={'width=device-width, initial-scale=1'}/>
                 <link rel={'stylesheet'} type={'text/css'} href={'styles/main.css'}/>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js"></script>
+                <script async src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js"></script>
+                <script async src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js"></script>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/css/uikit.min.css"/>
                 <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png"/>
                 <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png"/>

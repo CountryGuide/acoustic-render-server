@@ -8736,7 +8736,7 @@ var _reactRouterDom = __webpack_require__(114);
 
 var _Routes = __webpack_require__(470);
 
-var _reducers = __webpack_require__(491);
+var _reducers = __webpack_require__(492);
 
 var _reactRouterConfig = __webpack_require__(184);
 
@@ -36615,7 +36615,7 @@ var _AdminsPage = __webpack_require__(489);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
-var _ReportPage = __webpack_require__(495);
+var _ReportPage = __webpack_require__(491);
 
 var _ReportPage2 = _interopRequireDefault(_ReportPage);
 
@@ -36676,8 +36676,8 @@ var App = function App(_ref) {
             null,
             _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
             _react2.default.createElement('link', { rel: 'stylesheet', type: 'text/css', href: 'styles/main.css' }),
-            _react2.default.createElement('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js' }),
-            _react2.default.createElement('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js' }),
+            _react2.default.createElement('script', { async: true, src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js' }),
+            _react2.default.createElement('script', { async: true, src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js' }),
             _react2.default.createElement('link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/css/uikit.min.css' }),
             _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '57x57', href: 'favicon/apple-icon-57x57.png' }),
             _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '60x60', href: 'favicon/apple-icon-60x60.png' }),
@@ -38582,113 +38582,6 @@ exports.default = function (ChildComponent) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.combinedReducers = undefined;
-
-var _redux = __webpack_require__(111);
-
-var _users = __webpack_require__(492);
-
-var _auth = __webpack_require__(493);
-
-var _admins = __webpack_require__(494);
-
-var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
-    users: _users.users,
-    auth: _auth.auth,
-    admins: _admins.admins
-});
-
-/***/ }),
-/* 492 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.users = users;
-
-var _actions = __webpack_require__(54);
-
-function users() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    // console.log(action);
-    switch (action.type) {
-        case _actions.FETCH_USERS:
-            return action.payload.data;
-        case 'USERS_LIST_SORTED':
-            return action.payload.users;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-/* 493 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.auth = auth;
-
-var _actions = __webpack_require__(54);
-
-function auth() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var action = arguments[1];
-
-    switch (action.type) {
-        case _actions.FETCH_CURRENT_USER:
-            return action.payload.data || false;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-/* 494 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.admins = admins;
-
-var _actions = __webpack_require__(54);
-
-function admins() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    switch (action.type) {
-        case _actions.FETCH_ADMINS:
-            return action.payload.data;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-/* 495 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -38846,6 +38739,113 @@ var ReportPage = function (_React$Component) {
 exports.default = {
     component: ReportPage
 };
+
+/***/ }),
+/* 492 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.combinedReducers = undefined;
+
+var _redux = __webpack_require__(111);
+
+var _users = __webpack_require__(493);
+
+var _auth = __webpack_require__(494);
+
+var _admins = __webpack_require__(495);
+
+var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
+    users: _users.users,
+    auth: _auth.auth,
+    admins: _admins.admins
+});
+
+/***/ }),
+/* 493 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.users = users;
+
+var _actions = __webpack_require__(54);
+
+function users() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments[1];
+
+    // console.log(action);
+    switch (action.type) {
+        case _actions.FETCH_USERS:
+            return action.payload.data;
+        case 'USERS_LIST_SORTED':
+            return action.payload.users;
+        default:
+            return state;
+    }
+}
+
+/***/ }),
+/* 494 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.auth = auth;
+
+var _actions = __webpack_require__(54);
+
+function auth() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case _actions.FETCH_CURRENT_USER:
+            return action.payload.data || false;
+        default:
+            return state;
+    }
+}
+
+/***/ }),
+/* 495 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.admins = admins;
+
+var _actions = __webpack_require__(54);
+
+function admins() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments[1];
+
+    switch (action.type) {
+        case _actions.FETCH_ADMINS:
+            return action.payload.data;
+        default:
+            return state;
+    }
+}
 
 /***/ })
 /******/ ]);

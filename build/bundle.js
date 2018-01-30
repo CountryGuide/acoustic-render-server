@@ -250,7 +250,7 @@ var _AdminsPage = __webpack_require__(25);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
-var _ReportPage = __webpack_require__(34);
+var _ReportPage = __webpack_require__(27);
 
 var _ReportPage2 = _interopRequireDefault(_ReportPage);
 
@@ -310,7 +310,7 @@ var _path2 = _interopRequireDefault(_path);
 
 var _renderer = __webpack_require__(16);
 
-var _createStore = __webpack_require__(27);
+var _createStore = __webpack_require__(28);
 
 var _Routes = __webpack_require__(6);
 
@@ -484,7 +484,7 @@ function render(req, store, context) {
 
     var helmet = _reactHelmet.Helmet.renderStatic();
 
-    return '\n        <!DOCTYPE html>\n        <html>\n            <head>\n              ' + helmet.title.toString() + '\n              ' + helmet.meta.toString() + '\n              ' + helmet.link.toString() + '\n            </head>\n            <body>\n                <div id="root">' + content + '</div>\n                <script >\n                    window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n                </script>\n                <script src=\'bundle.js\'></script>\n            </body>\n        </html>\n    ';
+    return '\n        <!DOCTYPE html>\n        <html>\n            <head>\n              ' + helmet.title.toString() + '\n              ' + helmet.meta.toString() + '\n              ' + helmet.link.toString() + '\n              ' + helmet.script.toString() + '\n            </head>\n            <body>\n                <div id="root">' + content + '</div>\n                <script >\n                    window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n                </script>\n                <script async src=\'bundle.js\'></script>\n            </body>\n        </html>\n    ';
 }
 
 /***/ }),
@@ -541,8 +541,8 @@ var App = function App(_ref) {
             null,
             _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
             _react2.default.createElement('link', { rel: 'stylesheet', type: 'text/css', href: 'styles/main.css' }),
-            _react2.default.createElement('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js' }),
-            _react2.default.createElement('script', { src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js' }),
+            _react2.default.createElement('script', { async: true, src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js' }),
+            _react2.default.createElement('script', { async: true, src: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js' }),
             _react2.default.createElement('link', { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/css/uikit.min.css' }),
             _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '57x57', href: 'favicon/apple-icon-57x57.png' }),
             _react2.default.createElement('link', { rel: 'apple-touch-icon', sizes: '60x60', href: 'favicon/apple-icon-60x60.png' }),
@@ -1075,160 +1075,6 @@ exports.default = function (ChildComponent) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.storeCreator = storeCreator;
-
-var _redux = __webpack_require__(7);
-
-var _reduxThunk = __webpack_require__(28);
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-var _axios = __webpack_require__(29);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-var _reducers = __webpack_require__(30);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function storeCreator(req) {
-    var axiosInstance = _axios2.default.create({
-        baseURL: 'http://react-ssr-api.herokuapp.com',
-        headers: { cookie: req.get('cookie') || '' }
-    });
-
-    return (0, _redux.createStore)(_reducers.combinedReducers, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(axiosInstance)));
-}
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-thunk");
-
-/***/ }),
-/* 29 */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ }),
-/* 30 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.combinedReducers = undefined;
-
-var _redux = __webpack_require__(7);
-
-var _users = __webpack_require__(31);
-
-var _auth = __webpack_require__(32);
-
-var _admins = __webpack_require__(33);
-
-var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
-    users: _users.users,
-    auth: _auth.auth,
-    admins: _admins.admins
-});
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.users = users;
-
-var _actions = __webpack_require__(1);
-
-function users() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    // console.log(action);
-    switch (action.type) {
-        case _actions.FETCH_USERS:
-            return action.payload.data;
-        case 'USERS_LIST_SORTED':
-            return action.payload.users;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.auth = auth;
-
-var _actions = __webpack_require__(1);
-
-function auth() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var action = arguments[1];
-
-    switch (action.type) {
-        case _actions.FETCH_CURRENT_USER:
-            return action.payload.data || false;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.admins = admins;
-
-var _actions = __webpack_require__(1);
-
-function admins() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-    var action = arguments[1];
-
-    switch (action.type) {
-        case _actions.FETCH_ADMINS:
-            return action.payload.data;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -1386,6 +1232,160 @@ var ReportPage = function (_React$Component) {
 exports.default = {
     component: ReportPage
 };
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.storeCreator = storeCreator;
+
+var _redux = __webpack_require__(7);
+
+var _reduxThunk = __webpack_require__(29);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _axios = __webpack_require__(30);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _reducers = __webpack_require__(31);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function storeCreator(req) {
+    var axiosInstance = _axios2.default.create({
+        baseURL: 'http://react-ssr-api.herokuapp.com',
+        headers: { cookie: req.get('cookie') || '' }
+    });
+
+    return (0, _redux.createStore)(_reducers.combinedReducers, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(axiosInstance)));
+}
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-thunk");
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.combinedReducers = undefined;
+
+var _redux = __webpack_require__(7);
+
+var _users = __webpack_require__(32);
+
+var _auth = __webpack_require__(33);
+
+var _admins = __webpack_require__(34);
+
+var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
+    users: _users.users,
+    auth: _auth.auth,
+    admins: _admins.admins
+});
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.users = users;
+
+var _actions = __webpack_require__(1);
+
+function users() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments[1];
+
+    // console.log(action);
+    switch (action.type) {
+        case _actions.FETCH_USERS:
+            return action.payload.data;
+        case 'USERS_LIST_SORTED':
+            return action.payload.users;
+        default:
+            return state;
+    }
+}
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.auth = auth;
+
+var _actions = __webpack_require__(1);
+
+function auth() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case _actions.FETCH_CURRENT_USER:
+            return action.payload.data || false;
+        default:
+            return state;
+    }
+}
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.admins = admins;
+
+var _actions = __webpack_require__(1);
+
+function admins() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+    var action = arguments[1];
+
+    switch (action.type) {
+        case _actions.FETCH_ADMINS:
+            return action.payload.data;
+        default:
+            return state;
+    }
+}
 
 /***/ })
 /******/ ]);

@@ -23,12 +23,10 @@ export function render (req, store, context) {
         <!DOCTYPE html>
         <html>
             <head>
-              <script async src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit.min.js"></script>
-              <script async src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/js/uikit-icons.min.js"></script>
-              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.38/css/uikit.min.css"/>
               ${helmet.title.toString()}
               ${helmet.meta.toString()}
               ${helmet.link.toString()}
+              ${helmet.script.toString()}
             </head>
             <body>
                 <div id="root">${content}</div>

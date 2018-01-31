@@ -5,12 +5,11 @@ const HomePage = () => {
     return (
         <div>
             <Helmet>
-                <title>React SSR</title>
+                <title>AR</title>
                 <meta property={'og:title'} content={'React SSR'}/>
             </Helmet>
             <h2>Welcome!</h2>
         </div>
-
     );
 };
 

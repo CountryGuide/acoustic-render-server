@@ -37215,7 +37215,7 @@ var Header = function Header(_ref) {
 
     return _react2.default.createElement(
         'nav',
-        { className: 'uk-navbar-container header', 'data-uk-navbar': true },
+        { className: 'uk-navbar-container header uk-navbar', 'data-uk-navbar': true },
         _react2.default.createElement(
             'div',
             { className: 'uk-navbar-left' },
@@ -38220,7 +38220,7 @@ var HomePage = function HomePage() {
             _react2.default.createElement(
                 'title',
                 null,
-                'React SSR'
+                'AR'
             ),
             _react2.default.createElement('meta', { property: 'og:title', content: 'React SSR' })
         ),
@@ -38589,6 +38589,8 @@ var _react = __webpack_require__(3);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactHelmet = __webpack_require__(63);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -38597,18 +38599,20 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var RTInput = function RTInput() {
+var frequencies = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500, 3150];
+
+var RTInput = function RTInput(f) {
     return _react2.default.createElement(
         "div",
-        { className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+        { key: f, className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
         _react2.default.createElement(
             "label",
             { className: "uk-form-label" },
             _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.01", min: "0" }),
             _react2.default.createElement(
                 "span",
-                null,
-                "100"
+                { className: "uk-margin-small-left" },
+                f
             )
         )
     );
@@ -38630,6 +38634,15 @@ var ReportPage = function (_React$Component) {
                 "form",
                 { className: "uk-padding-small", "data-uk-grid": true },
                 _react2.default.createElement(
+                    _reactHelmet.Helmet,
+                    null,
+                    _react2.default.createElement(
+                        "title",
+                        null,
+                        "AR: New report"
+                    )
+                ),
+                _react2.default.createElement(
                     "fieldset",
                     { className: "uk-fieldset" },
                     _react2.default.createElement(
@@ -38643,12 +38656,16 @@ var ReportPage = function (_React$Component) {
                         _react2.default.createElement(
                             "div",
                             null,
-                            _react2.default.createElement(RTInput, null)
+                            frequencies.slice(0, 8).map(function (f) {
+                                return RTInput(f);
+                            })
                         ),
                         _react2.default.createElement(
                             "div",
                             null,
-                            _react2.default.createElement(RTInput, null)
+                            frequencies.slice(8).map(function (f) {
+                                return RTInput(f);
+                            })
                         )
                     )
                 ),
@@ -38670,7 +38687,7 @@ var ReportPage = function (_React$Component) {
                             _react2.default.createElement("input", { className: "uk-checkbox", type: "checkbox" }),
                             _react2.default.createElement(
                                 "span",
-                                null,
+                                { className: "uk-margin-small-left" },
                                 "Air mode"
                             )
                         )
@@ -38686,7 +38703,7 @@ var ReportPage = function (_React$Component) {
                                 min: "0" }),
                             _react2.default.createElement(
                                 "span",
-                                null,
+                                { className: "uk-margin-small-left" },
                                 "Volume"
                             )
                         )
@@ -38702,7 +38719,7 @@ var ReportPage = function (_React$Component) {
                                 min: "0" }),
                             _react2.default.createElement(
                                 "span",
-                                null,
+                                { className: "uk-margin-small-left" },
                                 "Square"
                             )
                         )
@@ -38722,7 +38739,7 @@ var ReportPage = function (_React$Component) {
                                     placeholder: "Select file", disabled: true }),
                                 _react2.default.createElement(
                                     "span",
-                                    null,
+                                    { className: "uk-margin-small-left" },
                                     "Data source"
                                 )
                             )

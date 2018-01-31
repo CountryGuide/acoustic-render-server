@@ -6,7 +6,7 @@ const Header = ({ auth }) => {
     const adminsRoute = () => auth ? <li><Link to='/admins'>Admins</Link></li> : null;
 
     return (
-        <nav className="uk-navbar-container header" data-uk-navbar>
+        <nav className="uk-navbar-container header uk-navbar" data-uk-navbar>
             <div className="uk-navbar-left">
                 <Link className="uk-navbar-item uk-logo" to='/'>AR</Link>
                 <ul className="uk-navbar-nav">

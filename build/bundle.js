@@ -71,6 +71,12 @@ module.exports = require("react");
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-helmet");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -85,6 +91,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var FETCH_USERS = exports.FETCH_USERS = 'FETCH_USERS';
 var FETCH_ADMINS = exports.FETCH_ADMINS = 'FETCH_ADMINS';
 var FETCH_CURRENT_USER = exports.FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
+var REPORT_CREATED = exports.REPORT_CREATED = 'REPORT_CREATED';
 
 var fetchUsers = exports.fetchUsers = function fetchUsers() {
     return function () {
@@ -188,11 +195,38 @@ var fetchAdmins = exports.fetchAdmins = function fetchAdmins() {
     }();
 };
 
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
+var createReport = exports.createReport = function createReport() {
+    return function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch, getState, api) {
+            var res;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                while (1) {
+                    switch (_context4.prev = _context4.next) {
+                        case 0:
+                            _context4.next = 2;
+                            return api.get('/generate');
 
-module.exports = require("react-helmet");
+                        case 2:
+                            res = _context4.sent;
+
+                            dispatch({
+                                type: REPORT_CREATED,
+                                payload: res
+                            });
+
+                        case 4:
+                        case 'end':
+                            return _context4.stop();
+                    }
+                }
+            }, _callee4, undefined);
+        }));
+
+        return function (_x10, _x11, _x12) {
+            return _ref4.apply(this, arguments);
+        };
+    }();
+};
 
 /***/ }),
 /* 3 */
@@ -461,7 +495,7 @@ var _reactRedux = __webpack_require__(3);
 
 var _reactRouterConfig = __webpack_require__(5);
 
-var _reactHelmet = __webpack_require__(2);
+var _reactHelmet = __webpack_require__(1);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -520,9 +554,9 @@ var _Header = __webpack_require__(20);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(2);
 
-var _reactHelmet = __webpack_require__(2);
+var _reactHelmet = __webpack_require__(1);
 
 var _Footer = __webpack_require__(21);
 
@@ -699,7 +733,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactHelmet = __webpack_require__(2);
+var _reactHelmet = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -748,9 +782,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _index = __webpack_require__(1);
+var _index = __webpack_require__(2);
 
-var _reactHelmet = __webpack_require__(2);
+var _reactHelmet = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -841,7 +875,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactHelmet = __webpack_require__(2);
+var _reactHelmet = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -898,13 +932,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRedux = __webpack_require__(3);
 
-var _index = __webpack_require__(1);
+var _index = __webpack_require__(2);
 
 var _requireAuth = __webpack_require__(26);
 
 var _requireAuth2 = _interopRequireDefault(_requireAuth);
 
-var _reactHelmet = __webpack_require__(2);
+var _reactHelmet = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1078,11 +1112,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactHelmet = __webpack_require__(2);
+var _reactHelmet = __webpack_require__(1);
+
+var _axios = __webpack_require__(30);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _reactRedux = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1097,7 +1139,8 @@ var frequencies = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250,
 var RTInput = function RTInput(f) {
     return _react2.default.createElement(
         "div",
-        { key: f, className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+        { key: f,
+            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
         _react2.default.createElement(
             "label",
             { className: "uk-form-label" },
@@ -1111,13 +1154,79 @@ var RTInput = function RTInput(f) {
     );
 };
 
+var ParameterInput = function ParameterInput(props) {
+    return _react2.default.createElement(
+        "div",
+        {
+            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+        _react2.default.createElement(
+            "label",
+            { className: "uk-form-label" },
+            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.1",
+                min: "0" }),
+            _react2.default.createElement(
+                "span",
+                { className: "uk-margin-small-left" },
+                props.name
+            )
+        )
+    );
+};
+
+var FileInput = function FileInput() {
+    return _react2.default.createElement(
+        "div",
+        {
+            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
+        _react2.default.createElement(
+            "label",
+            { className: "uk-form-label" },
+            _react2.default.createElement(
+                "div",
+                { "data-uk-form-custom": "target: true" },
+                _react2.default.createElement("input", { type: "file" }),
+                _react2.default.createElement("input", { className: "uk-input uk-form-small uk-form-width-small", type: "text",
+                    placeholder: "Select file", disabled: true }),
+                _react2.default.createElement(
+                    "span",
+                    { className: "uk-margin-small-left" },
+                    "Data source"
+                )
+            )
+        )
+    );
+};
+
+var mapStateToProps = function mapStateToProps(state) {
+    return _extends({}, state);
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    return {
+        onSubmit: function onSubmit(param) {
+            return dispatch({
+                type: 'FORM_SUBMIT',
+                payload: _axios2.default.get('test')
+            });
+        }
+    };
+};
+
 var ReportPage = function (_React$Component) {
     _inherits(ReportPage, _React$Component);
 
-    function ReportPage() {
+    function ReportPage(props) {
         _classCallCheck(this, ReportPage);
 
-        return _possibleConstructorReturn(this, (ReportPage.__proto__ || Object.getPrototypeOf(ReportPage)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (ReportPage.__proto__ || Object.getPrototypeOf(ReportPage)).call(this, props));
+
+        _this.submitForm = function (param) {
+            return function (ev) {
+                ev.preventDefault();
+                _this.props.onSubmit(param);
+            };
+        };
+        return _this;
     }
 
     _createClass(ReportPage, [{
@@ -1125,7 +1234,7 @@ var ReportPage = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 "form",
-                { className: "uk-padding-small", "data-uk-grid": true },
+                { className: "uk-padding-small", "data-uk-grid": true, onSubmit: this.submitForm('a') },
                 _react2.default.createElement(
                     _reactHelmet.Helmet,
                     null,
@@ -1185,58 +1294,17 @@ var ReportPage = function (_React$Component) {
                             )
                         )
                     ),
+                    _react2.default.createElement(ParameterInput, { name: 'Volume' }),
+                    _react2.default.createElement(ParameterInput, { name: 'Square' }),
+                    _react2.default.createElement(FileInput, null)
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "uk-width-1-1" },
                     _react2.default.createElement(
-                        "div",
-                        {
-                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
-                        _react2.default.createElement(
-                            "label",
-                            { className: "uk-form-label" },
-                            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.1",
-                                min: "0" }),
-                            _react2.default.createElement(
-                                "span",
-                                { className: "uk-margin-small-left" },
-                                "Volume"
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        {
-                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
-                        _react2.default.createElement(
-                            "label",
-                            { className: "uk-form-label" },
-                            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.1",
-                                min: "0" }),
-                            _react2.default.createElement(
-                                "span",
-                                { className: "uk-margin-small-left" },
-                                "Square"
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(
-                        "div",
-                        {
-                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
-                        _react2.default.createElement(
-                            "label",
-                            { className: "uk-form-label" },
-                            _react2.default.createElement(
-                                "div",
-                                { "data-uk-form-custom": "target: true" },
-                                _react2.default.createElement("input", { type: "file" }),
-                                _react2.default.createElement("input", { className: "uk-input uk-form-small uk-form-width-small", type: "text",
-                                    placeholder: "Select file", disabled: true }),
-                                _react2.default.createElement(
-                                    "span",
-                                    { className: "uk-margin-small-left" },
-                                    "Data source"
-                                )
-                            )
-                        )
+                        "button",
+                        { className: "uk-button uk-button-primary", type: "submit" },
+                        "Create report"
                     )
                 )
             );
@@ -1247,7 +1315,7 @@ var ReportPage = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = {
-    component: ReportPage
+    component: (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ReportPage)
 };
 
 /***/ }),
@@ -1335,7 +1403,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.users = users;
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(2);
 
 function users() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1364,7 +1432,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.auth = auth;
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(2);
 
 function auth() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -1390,7 +1458,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.admins = admins;
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(2);
 
 function admins() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];

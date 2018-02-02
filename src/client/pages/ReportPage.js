@@ -7,12 +7,13 @@ import {withRouter} from "react-router-dom";
 
 const frequencies = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500, 3150];
 
-const RTInput = (f) => {
+const RTInput = (f, change) => {
     return (
         <div key={f}
              className="uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom">
             <label className="uk-form-label">
-                <input className="uk-input uk-form-width-small uk-form-small" type="number" step="0.01" min="0"/>
+                <input className="uk-input uk-form-width-small uk-form-small"
+                       type="number" step="0.01" min="0" onChange={change} name={`rt_${f}`}/>
                 <span className="uk-margin-small-left">{f}</span>
             </label>
         </div>
@@ -51,37 +52,47 @@ const FileInput = () => {
 const mapStateToProps = state => ({...state.report});
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (param) => dispatch({
+    onSubmit: values => dispatch({
         type: 'FORM_SUBMIT',
-        payload: axios.get('test')
+        payload: {
+            values
+        }
+    }),
+    onChangeRT: (value, name) => dispatch({
+        type: 'RT_CHANGED',
+        payload: {
+            value, name
+        }
     })
 });
 
 class ReportPage extends React.Component {
     constructor (props) {
         super(props);
-        this.submitForm = (param) => ev => {
+        this.submitForm = values => ev => {
             ev.preventDefault();
-            this.props.onSubmit(param);
+            this.props.onSubmit(values);
+        };
+        this.changeRT = ev => {
+            this.props.onChangeRT(ev.target.value, ev.target.name);
         }
-
     }
 
     render () {
         console.log(this.props);
         return (
-            <form className="uk-padding-small" data-uk-grid onSubmit={this.submitForm('a')}>
+            <form className="uk-padding-small" data-uk-grid onSubmit={this.submitForm(this.props.values)}>
                 <Helmet>
                     <title>AR: New report</title>
                 </Helmet>
                 <fieldset className="uk-fieldset">
-                    <legend className="uk-legend">Reverberation time, Hz</legend>
+                    <legend className="uk-legend">Reverberation time, s</legend>
                     <div data-uk-grid>
                         <div>
-                            {frequencies.slice(0, 8).map(f => RTInput(f))}
+                            {frequencies.slice(0, 8).map(f => RTInput(f, this.changeRT))}
                         </div>
                         <div>
-                            {frequencies.slice(8).map(f => RTInput(f))}
+                            {frequencies.slice(8).map(f => RTInput(f, this.changeRT))}
                         </div>
                     </div>
                 </fieldset>

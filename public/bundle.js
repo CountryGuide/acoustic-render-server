@@ -38645,7 +38645,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var frequencies = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500, 3150];
 
-var RTInput = function RTInput(f) {
+var RTInput = function RTInput(f, change) {
     return _react2.default.createElement(
         "div",
         { key: f,
@@ -38653,7 +38653,8 @@ var RTInput = function RTInput(f) {
         _react2.default.createElement(
             "label",
             { className: "uk-form-label" },
-            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.01", min: "0" }),
+            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small",
+                type: "number", step: "0.01", min: "0", onChange: change, name: "rt_" + f }),
             _react2.default.createElement(
                 "span",
                 { className: "uk-margin-small-left" },
@@ -38712,10 +38713,20 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        onSubmit: function onSubmit(param) {
+        onSubmit: function onSubmit(values) {
             return dispatch({
                 type: 'FORM_SUBMIT',
-                payload: _axios2.default.get('test')
+                payload: {
+                    values: values
+                }
+            });
+        },
+        onChangeRT: function onChangeRT(value, name) {
+            return dispatch({
+                type: 'RT_CHANGED',
+                payload: {
+                    value: value, name: name
+                }
             });
         }
     };
@@ -38729,23 +38740,27 @@ var ReportPage = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (ReportPage.__proto__ || Object.getPrototypeOf(ReportPage)).call(this, props));
 
-        _this.submitForm = function (param) {
+        _this.submitForm = function (values) {
             return function (ev) {
                 ev.preventDefault();
-                _this.props.onSubmit(param);
+                _this.props.onSubmit(values);
             };
         };
-
+        _this.changeRT = function (ev) {
+            _this.props.onChangeRT(ev.target.value, ev.target.name);
+        };
         return _this;
     }
 
     _createClass(ReportPage, [{
         key: "render",
         value: function render() {
+            var _this2 = this;
+
             console.log(this.props);
             return _react2.default.createElement(
                 "form",
-                { className: "uk-padding-small", "data-uk-grid": true, onSubmit: this.submitForm('a') },
+                { className: "uk-padding-small", "data-uk-grid": true, onSubmit: this.submitForm(this.props.values) },
                 _react2.default.createElement(
                     _reactHelmet.Helmet,
                     null,
@@ -38761,7 +38776,7 @@ var ReportPage = function (_React$Component) {
                     _react2.default.createElement(
                         "legend",
                         { className: "uk-legend" },
-                        "Reverberation time, Hz"
+                        "Reverberation time, s"
                     ),
                     _react2.default.createElement(
                         "div",
@@ -38770,14 +38785,14 @@ var ReportPage = function (_React$Component) {
                             "div",
                             null,
                             frequencies.slice(0, 8).map(function (f) {
-                                return RTInput(f);
+                                return RTInput(f, _this2.changeRT);
                             })
                         ),
                         _react2.default.createElement(
                             "div",
                             null,
                             frequencies.slice(8).map(function (f) {
-                                return RTInput(f);
+                                return RTInput(f, _this2.changeRT);
                             })
                         )
                     )
@@ -38957,12 +38972,21 @@ function report() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
-    console.log(action.type);
+    console.log(action);
     switch (action.type) {
         case 'FORM_SUBMIT':
             return _extends({}, state, {
                 formSubmit: true
             });
+        case 'RT_CHANGED':
+            var name = action.payload.name;
+            var value = parseFloat(action.payload.value);
+            var _state = _extends({}, state);
+            if (!_state.values) {
+                _state.values = {};
+            }
+            _state.values[name] = value;
+            return _state;
         default:
             return state;
     }

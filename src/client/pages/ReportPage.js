@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import { connect } from "react-redux";
+import {withRouter} from "react-router-dom";
 
 
 const frequencies = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500, 3150];
@@ -24,7 +25,7 @@ const ParameterInput = (props) => {
             className="uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom">
             <label className="uk-form-label">
                 <input className="uk-input uk-form-width-small uk-form-small" type="number" step="0.1"
-                       min="0"/>
+                       min="0" disabled={props.disabled}/>
                 <span className="uk-margin-small-left">{props.name}</span>
             </label>
         </div>
@@ -47,7 +48,7 @@ const FileInput = () => {
     );
 };
 
-const mapStateToProps = state => ({...state});
+const mapStateToProps = state => ({...state.report});
 
 const mapDispatchToProps = dispatch => ({
     onSubmit: (param) => dispatch({
@@ -63,9 +64,11 @@ class ReportPage extends React.Component {
             ev.preventDefault();
             this.props.onSubmit(param);
         }
+
     }
 
     render () {
+        console.log(this.props);
         return (
             <form className="uk-padding-small" data-uk-grid onSubmit={this.submitForm('a')}>
                 <Helmet>
@@ -92,11 +95,11 @@ class ReportPage extends React.Component {
                         </label>
                     </div>
                     <ParameterInput name={'Volume'}/>
-                    <ParameterInput name={'Square'}/>
+                    <ParameterInput name={'Square'} disabled={true}/>
                     <FileInput/>
                 </fieldset>
                 <div className='uk-width-1-1'>
-                    <button className="uk-button uk-button-primary" type='submit'>Create report</button>
+                    <button className="uk-button uk-button-primary" type='submit' disabled={this.props.formSubmit}>Create report</button>
                 </div>
             </form>
         )
@@ -105,5 +108,5 @@ class ReportPage extends React.Component {
 
 
 export default {
-    component: connect(mapStateToProps, mapDispatchToProps)(ReportPage)
+    component: withRouter(connect(mapStateToProps, mapDispatchToProps)(ReportPage))
 }

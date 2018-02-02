@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,6 +77,12 @@ module.exports = require("react-helmet");
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -229,12 +235,6 @@ var createReport = exports.createReport = function createReport() {
 };
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
@@ -264,27 +264,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _App = __webpack_require__(19);
+var _App = __webpack_require__(20);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _HomePage = __webpack_require__(22);
+var _HomePage = __webpack_require__(23);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UsersPage = __webpack_require__(23);
+var _UsersPage = __webpack_require__(24);
 
 var _UsersPage2 = _interopRequireDefault(_UsersPage);
 
-var _NotFoundPage = __webpack_require__(24);
+var _NotFoundPage = __webpack_require__(25);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _AdminsPage = __webpack_require__(25);
+var _AdminsPage = __webpack_require__(26);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
-var _ReportPage = __webpack_require__(27);
+var _ReportPage = __webpack_require__(28);
 
 var _ReportPage2 = _interopRequireDefault(_ReportPage);
 
@@ -307,44 +307,50 @@ var Routes = exports.Routes = [_extends({}, _App2.default, {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("redux");
+module.exports = require("axios");
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(9);
+__webpack_require__(10);
 
-var _express = __webpack_require__(10);
+var _express = __webpack_require__(11);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _compression = __webpack_require__(11);
+var _compression = __webpack_require__(12);
 
 var _compression2 = _interopRequireDefault(_compression);
 
-var _morgan = __webpack_require__(12);
+var _morgan = __webpack_require__(13);
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
-var _bodyParser = __webpack_require__(13);
+var _bodyParser = __webpack_require__(14);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _serveFavicon = __webpack_require__(14);
+var _serveFavicon = __webpack_require__(15);
 
 var _serveFavicon2 = _interopRequireDefault(_serveFavicon);
 
-var _path = __webpack_require__(15);
+var _path = __webpack_require__(16);
 
 var _path2 = _interopRequireDefault(_path);
 
-var _renderer = __webpack_require__(16);
+var _renderer = __webpack_require__(17);
 
-var _createStore = __webpack_require__(28);
+var _createStore = __webpack_require__(29);
 
 var _Routes = __webpack_require__(6);
 
@@ -422,49 +428,49 @@ app.listen(PORT, function () {
 });
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("compression");
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("morgan");
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("serve-favicon");
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -479,11 +485,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(17);
+var _server = __webpack_require__(18);
 
 var ReactDOMServer = _interopRequireWildcard(_server);
 
-var _serializeJavascript = __webpack_require__(18);
+var _serializeJavascript = __webpack_require__(19);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
@@ -491,7 +497,7 @@ var _reactRouterDom = __webpack_require__(4);
 
 var _Routes = __webpack_require__(6);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(2);
 
 var _reactRouterConfig = __webpack_require__(5);
 
@@ -522,19 +528,19 @@ function render(req, store, context) {
 }
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("serialize-javascript");
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -550,15 +556,15 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterConfig = __webpack_require__(5);
 
-var _Header = __webpack_require__(20);
+var _Header = __webpack_require__(21);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _actions = __webpack_require__(2);
+var _actions = __webpack_require__(3);
 
 var _reactHelmet = __webpack_require__(1);
 
-var _Footer = __webpack_require__(21);
+var _Footer = __webpack_require__(22);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -615,7 +621,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -631,7 +637,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -688,7 +694,7 @@ function mapStateToProps(_ref2) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -719,7 +725,7 @@ var Footer = function Footer() {
 exports.default = Footer;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -764,7 +770,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -780,9 +786,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(2);
 
-var _index = __webpack_require__(2);
+var _index = __webpack_require__(3);
 
 var _reactHelmet = __webpack_require__(1);
 
@@ -861,7 +867,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -914,7 +920,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -930,11 +936,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(2);
 
-var _index = __webpack_require__(2);
+var _index = __webpack_require__(3);
 
-var _requireAuth = __webpack_require__(26);
+var _requireAuth = __webpack_require__(27);
 
 var _requireAuth2 = _interopRequireDefault(_requireAuth);
 
@@ -1031,7 +1037,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1047,7 +1053,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(2);
 
 var _reactRouterDom = __webpack_require__(4);
 
@@ -1100,7 +1106,7 @@ exports.default = function (ChildComponent) {
 };
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1120,11 +1126,13 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactHelmet = __webpack_require__(1);
 
-var _axios = __webpack_require__(30);
+var _axios = __webpack_require__(7);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(2);
+
+var _reactRouterDom = __webpack_require__(4);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1163,7 +1171,7 @@ var ParameterInput = function ParameterInput(props) {
             "label",
             { className: "uk-form-label" },
             _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.1",
-                min: "0" }),
+                min: "0", disabled: props.disabled }),
             _react2.default.createElement(
                 "span",
                 { className: "uk-margin-small-left" },
@@ -1198,7 +1206,7 @@ var FileInput = function FileInput() {
 };
 
 var mapStateToProps = function mapStateToProps(state) {
-    return _extends({}, state);
+    return _extends({}, state.report);
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -1226,12 +1234,14 @@ var ReportPage = function (_React$Component) {
                 _this.props.onSubmit(param);
             };
         };
+
         return _this;
     }
 
     _createClass(ReportPage, [{
         key: "render",
         value: function render() {
+            console.log(this.props);
             return _react2.default.createElement(
                 "form",
                 { className: "uk-padding-small", "data-uk-grid": true, onSubmit: this.submitForm('a') },
@@ -1295,7 +1305,7 @@ var ReportPage = function (_React$Component) {
                         )
                     ),
                     _react2.default.createElement(ParameterInput, { name: 'Volume' }),
-                    _react2.default.createElement(ParameterInput, { name: 'Square' }),
+                    _react2.default.createElement(ParameterInput, { name: 'Square', disabled: true }),
                     _react2.default.createElement(FileInput, null)
                 ),
                 _react2.default.createElement(
@@ -1303,7 +1313,7 @@ var ReportPage = function (_React$Component) {
                     { className: "uk-width-1-1" },
                     _react2.default.createElement(
                         "button",
-                        { className: "uk-button uk-button-primary", type: "submit" },
+                        { className: "uk-button uk-button-primary", type: "submit", disabled: this.props.formSubmit },
                         "Create report"
                     )
                 )
@@ -1315,11 +1325,11 @@ var ReportPage = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = {
-    component: (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ReportPage)
+    component: (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(ReportPage))
 };
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1330,13 +1340,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.storeCreator = storeCreator;
 
-var _redux = __webpack_require__(7);
+var _redux = __webpack_require__(8);
 
-var _reduxThunk = __webpack_require__(29);
+var _reduxThunk = __webpack_require__(30);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(30);
+var _axios = __webpack_require__(7);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1354,16 +1364,10 @@ function storeCreator(req) {
 }
 
 /***/ }),
-/* 29 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-thunk");
-
-/***/ }),
 /* 30 */
 /***/ (function(module, exports) {
 
-module.exports = require("axios");
+module.exports = require("redux-thunk");
 
 /***/ }),
 /* 31 */
@@ -1377,7 +1381,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.combinedReducers = undefined;
 
-var _redux = __webpack_require__(7);
+var _redux = __webpack_require__(8);
 
 var _users = __webpack_require__(32);
 
@@ -1385,10 +1389,13 @@ var _auth = __webpack_require__(33);
 
 var _admins = __webpack_require__(34);
 
+var _report = __webpack_require__(35);
+
 var combinedReducers = exports.combinedReducers = (0, _redux.combineReducers)({
     users: _users.users,
     auth: _auth.auth,
-    admins: _admins.admins
+    admins: _admins.admins,
+    report: _report.report
 });
 
 /***/ }),
@@ -1403,7 +1410,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.users = users;
 
-var _actions = __webpack_require__(2);
+var _actions = __webpack_require__(3);
 
 function users() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1432,7 +1439,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.auth = auth;
 
-var _actions = __webpack_require__(2);
+var _actions = __webpack_require__(3);
 
 function auth() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
@@ -1458,7 +1465,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.admins = admins;
 
-var _actions = __webpack_require__(2);
+var _actions = __webpack_require__(3);
 
 function admins() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1467,6 +1474,35 @@ function admins() {
     switch (action.type) {
         case _actions.FETCH_ADMINS:
             return action.payload.data;
+        default:
+            return state;
+    }
+}
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.report = report;
+function report() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var action = arguments[1];
+
+    console.log(action.type);
+    switch (action.type) {
+        case 'FORM_SUBMIT':
+            return _extends({}, state, {
+                formSubmit: true
+            });
         default:
             return state;
     }

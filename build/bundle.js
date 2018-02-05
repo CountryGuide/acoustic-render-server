@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 9);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -264,27 +264,27 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _App = __webpack_require__(20);
+var _App = __webpack_require__(19);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _HomePage = __webpack_require__(23);
+var _HomePage = __webpack_require__(22);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UsersPage = __webpack_require__(24);
+var _UsersPage = __webpack_require__(23);
 
 var _UsersPage2 = _interopRequireDefault(_UsersPage);
 
-var _NotFoundPage = __webpack_require__(25);
+var _NotFoundPage = __webpack_require__(24);
 
 var _NotFoundPage2 = _interopRequireDefault(_NotFoundPage);
 
-var _AdminsPage = __webpack_require__(26);
+var _AdminsPage = __webpack_require__(25);
 
 var _AdminsPage2 = _interopRequireDefault(_AdminsPage);
 
-var _ReportPage = __webpack_require__(28);
+var _ReportPage = __webpack_require__(27);
 
 var _ReportPage2 = _interopRequireDefault(_ReportPage);
 
@@ -307,50 +307,44 @@ var Routes = exports.Routes = [_extends({}, _App2.default, {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("axios");
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
 module.exports = require("redux");
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(10);
+__webpack_require__(9);
 
-var _express = __webpack_require__(11);
+var _express = __webpack_require__(10);
 
 var _express2 = _interopRequireDefault(_express);
 
-var _compression = __webpack_require__(12);
+var _compression = __webpack_require__(11);
 
 var _compression2 = _interopRequireDefault(_compression);
 
-var _morgan = __webpack_require__(13);
+var _morgan = __webpack_require__(12);
 
 var _morgan2 = _interopRequireDefault(_morgan);
 
-var _bodyParser = __webpack_require__(14);
+var _bodyParser = __webpack_require__(13);
 
 var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
-var _serveFavicon = __webpack_require__(15);
+var _serveFavicon = __webpack_require__(14);
 
 var _serveFavicon2 = _interopRequireDefault(_serveFavicon);
 
-var _path = __webpack_require__(16);
+var _path = __webpack_require__(15);
 
 var _path2 = _interopRequireDefault(_path);
 
-var _renderer = __webpack_require__(17);
+var _renderer = __webpack_require__(16);
 
-var _createStore = __webpack_require__(29);
+var _createStore = __webpack_require__(28);
 
 var _Routes = __webpack_require__(6);
 
@@ -428,49 +422,49 @@ app.listen(PORT, function () {
 });
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("babel-polyfill");
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("compression");
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("morgan");
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 15 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = require("serve-favicon");
 
 /***/ }),
-/* 16 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
 /***/ }),
-/* 17 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -485,11 +479,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(18);
+var _server = __webpack_require__(17);
 
 var ReactDOMServer = _interopRequireWildcard(_server);
 
-var _serializeJavascript = __webpack_require__(19);
+var _serializeJavascript = __webpack_require__(18);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
@@ -528,19 +522,19 @@ function render(req, store, context) {
 }
 
 /***/ }),
-/* 18 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 19 */
+/* 18 */
 /***/ (function(module, exports) {
 
 module.exports = require("serialize-javascript");
 
 /***/ }),
-/* 20 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -556,7 +550,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterConfig = __webpack_require__(5);
 
-var _Header = __webpack_require__(21);
+var _Header = __webpack_require__(20);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -564,7 +558,7 @@ var _actions = __webpack_require__(3);
 
 var _reactHelmet = __webpack_require__(1);
 
-var _Footer = __webpack_require__(22);
+var _Footer = __webpack_require__(21);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
@@ -621,7 +615,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 21 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -694,7 +688,7 @@ function mapStateToProps(_ref2) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
 
 /***/ }),
-/* 22 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -725,7 +719,7 @@ var Footer = function Footer() {
 exports.default = Footer;
 
 /***/ }),
-/* 23 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -770,7 +764,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -867,7 +861,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -920,7 +914,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -940,7 +934,7 @@ var _reactRedux = __webpack_require__(2);
 
 var _index = __webpack_require__(3);
 
-var _requireAuth = __webpack_require__(27);
+var _requireAuth = __webpack_require__(26);
 
 var _requireAuth2 = _interopRequireDefault(_requireAuth);
 
@@ -1037,7 +1031,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 27 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1106,7 +1100,7 @@ exports.default = function (ChildComponent) {
 };
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1125,10 +1119,6 @@ var _react = __webpack_require__(0);
 var _react2 = _interopRequireDefault(_react);
 
 var _reactHelmet = __webpack_require__(1);
-
-var _axios = __webpack_require__(7);
-
-var _axios2 = _interopRequireDefault(_axios);
 
 var _reactRedux = __webpack_require__(2);
 
@@ -1153,7 +1143,9 @@ var RTInput = function RTInput(f, change) {
             "label",
             { className: "uk-form-label" },
             _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small",
-                type: "number", step: "0.01", min: "0", onChange: change, name: "rt_" + f }),
+                type: "number", step: "0.01", min: "0", onInput: change,
+                required: true,
+                name: "rt_" + f }),
             _react2.default.createElement(
                 "span",
                 { className: "uk-margin-small-left" },
@@ -1171,8 +1163,15 @@ var ParameterInput = function ParameterInput(props) {
         _react2.default.createElement(
             "label",
             { className: "uk-form-label" },
-            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small", type: "number", step: "0.1",
-                min: "0", disabled: props.disabled }),
+            _react2.default.createElement("input", { className: "uk-input uk-form-width-small uk-form-small",
+                type: "number",
+                step: "0.1",
+                min: "0",
+                disabled: props.disabled,
+                onInput: props.onChange,
+                name: props.name,
+                required: props.required
+            }),
             _react2.default.createElement(
                 "span",
                 { className: "uk-margin-small-left" },
@@ -1182,7 +1181,7 @@ var ParameterInput = function ParameterInput(props) {
     );
 };
 
-var FileInput = function FileInput() {
+var FileInput = function FileInput(props) {
     return _react2.default.createElement(
         "div",
         {
@@ -1193,7 +1192,7 @@ var FileInput = function FileInput() {
             _react2.default.createElement(
                 "div",
                 { "data-uk-form-custom": "target: true" },
-                _react2.default.createElement("input", { type: "file" }),
+                _react2.default.createElement("input", { type: "file", required: true, onChange: props.onChange }),
                 _react2.default.createElement("input", { className: "uk-input uk-form-small uk-form-width-small", type: "text",
                     placeholder: "Select file", disabled: true }),
                 _react2.default.createElement(
@@ -1212,11 +1211,11 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     return {
-        onSubmit: function onSubmit(values) {
+        onSubmit: function onSubmit(rtValues, paramValues, files) {
             return dispatch({
                 type: 'FORM_SUBMIT',
                 payload: {
-                    values: values
+                    rtValues: rtValues, paramValues: paramValues, files: files
                 }
             });
         },
@@ -1225,6 +1224,22 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
                 type: 'RT_CHANGED',
                 payload: {
                     value: value, name: name
+                }
+            });
+        },
+        onChangeParam: function onChangeParam(value, name) {
+            return dispatch({
+                type: 'PARAM_CHANGED',
+                payload: {
+                    value: value, name: name
+                }
+            });
+        },
+        onFileUpload: function onFileUpload(file) {
+            return dispatch({
+                type: 'FILE_UPLOAD',
+                payload: {
+                    file: file
                 }
             });
         }
@@ -1239,14 +1254,23 @@ var ReportPage = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (ReportPage.__proto__ || Object.getPrototypeOf(ReportPage)).call(this, props));
 
-        _this.submitForm = function (values) {
+        _this.submitForm = function (_ref) {
+            var rtValues = _ref.rtValues,
+                paramValues = _ref.paramValues,
+                files = _ref.files;
             return function (ev) {
                 ev.preventDefault();
-                _this.props.onSubmit(values);
+                _this.props.onSubmit(rtValues, paramValues, files);
             };
         };
         _this.changeRT = function (ev) {
             _this.props.onChangeRT(ev.target.value, ev.target.name);
+        };
+        _this.changeParam = function (ev) {
+            _this.props.onChangeParam(ev.target.value, ev.target.name);
+        };
+        _this.onFileInputUpload = function (ev) {
+            _this.props.onFileUpload(ev.target.files[0]);
         };
         return _this;
     }
@@ -1259,7 +1283,7 @@ var ReportPage = function (_React$Component) {
             console.log(this.props);
             return _react2.default.createElement(
                 "form",
-                { className: "uk-padding-small", "data-uk-grid": true, onSubmit: this.submitForm(this.props.values) },
+                { className: "uk-padding-small", "data-uk-grid": true, onSubmit: this.submitForm(this.props) },
                 _react2.default.createElement(
                     _reactHelmet.Helmet,
                     null,
@@ -1304,31 +1328,15 @@ var ReportPage = function (_React$Component) {
                         { className: "uk-legend" },
                         "Parameters"
                     ),
-                    _react2.default.createElement(
-                        "div",
-                        {
-                            className: "uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom" },
-                        _react2.default.createElement(
-                            "label",
-                            { className: "uk-form-label" },
-                            _react2.default.createElement("input", { className: "uk-checkbox", type: "checkbox" }),
-                            _react2.default.createElement(
-                                "span",
-                                { className: "uk-margin-small-left" },
-                                "Air mode"
-                            )
-                        )
-                    ),
-                    _react2.default.createElement(ParameterInput, { name: 'Volume' }),
-                    _react2.default.createElement(ParameterInput, { name: 'Square', disabled: true }),
-                    _react2.default.createElement(FileInput, null)
+                    _react2.default.createElement(ParameterInput, { name: 'volume', onChange: this.changeParam, required: true }),
+                    _react2.default.createElement(FileInput, { onChange: this.onFileInputUpload })
                 ),
                 _react2.default.createElement(
                     "div",
                     { className: "uk-width-1-1" },
                     _react2.default.createElement(
                         "button",
-                        { className: "uk-button uk-button-primary", type: "submit", disabled: this.props.formSubmit },
+                        { className: "uk-button uk-button-primary", type: "submit" },
                         "Create report"
                     )
                 )
@@ -1344,7 +1352,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1355,13 +1363,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.storeCreator = storeCreator;
 
-var _redux = __webpack_require__(8);
+var _redux = __webpack_require__(7);
 
-var _reduxThunk = __webpack_require__(30);
+var _reduxThunk = __webpack_require__(29);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(7);
+var _axios = __webpack_require__(30);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1379,10 +1387,16 @@ function storeCreator(req) {
 }
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
 
 /***/ }),
 /* 31 */
@@ -1396,7 +1410,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.combinedReducers = undefined;
 
-var _redux = __webpack_require__(8);
+var _redux = __webpack_require__(7);
 
 var _users = __webpack_require__(32);
 
@@ -1508,24 +1522,50 @@ Object.defineProperty(exports, "__esModule", {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.report = report;
+
+var _axios = __webpack_require__(30);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function report() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];
 
     console.log(action);
+    var name = action.payload && action.payload.name;
+    var value = action.payload && parseFloat(action.payload.value);
+    var _state = _extends({}, state);
     switch (action.type) {
         case 'FORM_SUBMIT':
+            var data = new FormData();
+            var reverberationTime = Object.values(action.payload.rtValues);
+            data.append('reverberation-time', JSON.stringify(reverberationTime));
+            data.set('volume', action.payload.paramValues.volume);
+            data.set('data', action.payload.files.data);
+            data.set('air_mode', false.toString());
+            _axios2.default.post('http://localhost:5000/generate/', data);
             return _extends({}, state, {
                 formSubmit: true
             });
         case 'RT_CHANGED':
-            var name = action.payload.name;
-            var value = parseFloat(action.payload.value);
-            var _state = _extends({}, state);
-            if (!_state.values) {
-                _state.values = {};
+            if (!_state.rtValues) {
+                _state.rtValues = {};
             }
-            _state.values[name] = value;
+            _state.rtValues[name] = value;
+            return _state;
+        case 'PARAM_CHANGED':
+            if (!_state.paramValues) {
+                _state.paramValues = {};
+            }
+            _state.paramValues[name] = value;
+            return _state;
+        case 'FILE_UPLOAD':
+            if (!_state.files) {
+                _state.files = {};
+            }
+            _state.files['data'] = action.payload.file;
             return _state;
         default:
             return state;

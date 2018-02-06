@@ -9,6 +9,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Routes } from './Routes';
 import { combinedReducers } from './reducers';
 import { renderRoutes } from 'react-router-config';
+import {promiseMiddleware} from "../helper/middleware";
 
 
 const axiosInstance = axios.create({
@@ -18,7 +19,7 @@ const axiosInstance = axios.create({
 const store = createStore(
     combinedReducers,
     window.INITIAL_STATE,
-    applyMiddleware(thunk.withExtraArgument(axiosInstance))
+    applyMiddleware(thunk.withExtraArgument(axiosInstance), promiseMiddleware)
 );
 
 ReactDOM.hydrate(

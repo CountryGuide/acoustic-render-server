@@ -1,6 +1,3 @@
-import axios from "axios";
-
-
 export function report(state={}, action) {
     console.log(action);
     const name = action.payload && action.payload.name;
@@ -8,17 +5,9 @@ export function report(state={}, action) {
     const _state = {...state};
     switch (action.type) {
         case 'FORM_SUBMIT':
-            const data = new FormData();
-            const reverberationTime = Object.values(action.payload.rtValues);
-            data.append('reverberation-time', JSON.stringify(reverberationTime));
-            data.set('volume', action.payload.paramValues.volume);
-            data.set('data', action.payload.files.data);
-            data.set('air_mode', false.toString());
-            axios.post(`http://localhost:5000/generate/`, data);
-            return {
-                ...state,
-                formSubmit: true
-            };
+            const path = action.payload.data && action.payload.data.path;
+            _state.path = path;
+            return _state;
         case 'RT_CHANGED':
             if (!_state.rtValues) {
                 _state.rtValues = {}

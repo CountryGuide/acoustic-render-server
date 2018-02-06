@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
-import {withRouter} from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { Report } from '../../helper/httpRequest';
 
 
 const frequencies = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500, 3150];
@@ -62,9 +63,7 @@ const mapStateToProps = state => ({...state.report});
 const mapDispatchToProps = dispatch => ({
     onSubmit: (rtValues, paramValues, files) => dispatch({
         type: 'FORM_SUBMIT',
-        payload: {
-            rtValues, paramValues, files
-        }
+        payload: Report.create(rtValues, paramValues, files)
     }),
     onChangeRT: (value, name) => dispatch({
         type: 'RT_CHANGED',
@@ -104,6 +103,14 @@ class ReportPage extends React.Component {
         }
     }
 
+    renderPath () {
+        if (this.props.path) {
+            return (
+                <a href={`/api/download/${this.props.path}`}>Download</a>
+            )
+        }
+    }
+
     render () {
         console.log(this.props);
         return (
@@ -137,6 +144,7 @@ class ReportPage extends React.Component {
                 </fieldset>
                 <div className='uk-width-1-1'>
                     <button className="uk-button uk-button-primary" type='submit'>Create report</button>
+                    {this.renderPath()}
                 </div>
             </form>
         )

@@ -1,7 +1,6 @@
 export const FETCH_USERS        = 'FETCH_USERS';
 export const FETCH_ADMINS       = 'FETCH_ADMINS';
 export const FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
-export const REPORT_CREATED     = 'REPORT_CREATED';
 
 export const fetchUsers = () => async (dispatch, getState, api) => {
     let res = await api.get('/generate');
@@ -26,12 +25,4 @@ export const fetchAdmins = () => async (dispatch, getState, api) => {
         type:    FETCH_ADMINS,
         payload: res
     });
-};
-
-export const createReport = () => async (dispatch, getState, api) => {
-    const res = await api.get('/generate');
-    dispatch({
-        type: REPORT_CREATED,
-        payload: res
-    })
 };

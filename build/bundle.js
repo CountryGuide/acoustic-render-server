@@ -97,7 +97,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var FETCH_USERS = exports.FETCH_USERS = 'FETCH_USERS';
 var FETCH_ADMINS = exports.FETCH_ADMINS = 'FETCH_ADMINS';
 var FETCH_CURRENT_USER = exports.FETCH_CURRENT_USER = 'FETCH_CURRENT_USER';
-var REPORT_CREATED = exports.REPORT_CREATED = 'REPORT_CREATED';
 
 var fetchUsers = exports.fetchUsers = function fetchUsers() {
     return function () {
@@ -215,12 +214,6 @@ module.exports = require("react-router-config");
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
-
-module.exports = require("axios");
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -277,6 +270,12 @@ var Routes = exports.Routes = [_extends({}, _App2.default, {
 })];
 
 /***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("axios");
+
+/***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
@@ -323,7 +322,7 @@ var _renderer = __webpack_require__(18);
 
 var _createStore = __webpack_require__(31);
 
-var _Routes = __webpack_require__(7);
+var _Routes = __webpack_require__(6);
 
 var _reactRouterConfig = __webpack_require__(5);
 
@@ -334,7 +333,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 var PORT = process.env.PORT || 3000;
 var app = (0, _express2.default)();
 
-app.use('/api', (0, _expressHttpProxy2.default)('http://localhost:5000/'));
+// app.use('/api', proxy('http://localhost:5000/'));
+app.use('/api', (0, _expressHttpProxy2.default)('http://acoustic-api.herokuapp.com/', {
+    https: true
+}));
 
 app.use((0, _compression2.default)());
 app.use((0, _morgan2.default)('dev'));
@@ -474,7 +476,7 @@ var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _Routes = __webpack_require__(7);
+var _Routes = __webpack_require__(6);
 
 var _reactRedux = __webpack_require__(2);
 
@@ -1360,7 +1362,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Report = undefined;
 
-var _axios = __webpack_require__(6);
+var _axios = __webpack_require__(7);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1408,7 +1410,7 @@ var _reduxThunk = __webpack_require__(32);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _axios = __webpack_require__(6);
+var _axios = __webpack_require__(7);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1555,13 +1557,6 @@ Object.defineProperty(exports, "__esModule", {
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 exports.report = report;
-
-var _axios = __webpack_require__(6);
-
-var _axios2 = _interopRequireDefault(_axios);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function report() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var action = arguments[1];

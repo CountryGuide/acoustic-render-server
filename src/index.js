@@ -14,7 +14,10 @@ import { matchRoutes } from 'react-router-config';
 const PORT = process.env.PORT || 3000;
 const app  = express();
 
-app.use('/api', proxy('http://localhost:5000/'));
+// app.use('/api', proxy('http://localhost:5000/'));
+app.use('/api', proxy('http://acoustic-api.herokuapp.com/', {
+    https: true
+}));
 
 app.use(compression());
 app.use(logger('dev'));

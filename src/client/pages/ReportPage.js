@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { Report } from '../../helper/httpRequest';
+import {Helmet} from "react-helmet";
+import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+import {Report} from '../../helper/httpRequest';
 
 
 const frequencies = [100, 125, 160, 200, 250, 315, 400, 500, 630, 800, 1000, 1250, 1600, 2000, 2500, 3150];
@@ -61,41 +61,42 @@ const FileInput = (props) => {
 const mapStateToProps = state => ({...state.report});
 
 const mapDispatchToProps = dispatch => ({
-    onSubmit: (rtValues, paramValues, files) => dispatch({
-        type: 'FORM_SUBMIT',
+    onSubmit:      (rtValues, paramValues, files) => dispatch({
+        type:    'FORM_SUBMIT',
         payload: Report.create(rtValues, paramValues, files)
     }),
-    onChangeRT: (value, name) => dispatch({
-        type: 'RT_CHANGED',
+    onChangeRT:    (value, name) => dispatch({
+        type:    'RT_CHANGED',
         payload: {
             value, name
         }
     }),
     onChangeParam: (value, name) => dispatch({
-        type: 'PARAM_CHANGED',
+        type:    'PARAM_CHANGED',
         payload: {
             value, name
         }
     }),
-    onFileUpload: (file) => dispatch({
-        type: 'FILE_UPLOAD',
+    onFileUpload:  (file) => dispatch({
+        type:    'FILE_UPLOAD',
         payload: {
             file
         }
     })
 });
 
+
 class ReportPage extends React.Component {
-    constructor (props) {
+    constructor(props) {
         super(props);
-        this.submitForm = ({rtValues, paramValues, files}) => ev => {
+        this.submitForm        = ({rtValues, paramValues, files}) => ev => {
             ev.preventDefault();
             this.props.onSubmit(rtValues, paramValues, files);
         };
-        this.changeRT = ev => {
+        this.changeRT          = ev => {
             this.props.onChangeRT(ev.target.value, ev.target.name);
         };
-        this.changeParam = ev => {
+        this.changeParam       = ev => {
             this.props.onChangeParam(ev.target.value, ev.target.name);
         };
         this.onFileInputUpload = ev => {
@@ -103,15 +104,19 @@ class ReportPage extends React.Component {
         }
     }
 
-    renderPath () {
+    renderPath() {
         if (this.props.path) {
+            return <a href={`/api/download/${this.props.path}`}>Download</a>;
+        } else if (this.props.inProgress) {
             return (
-                <a href={`/api/download/${this.props.path}`}>Download</a>
-            )
+                <span data-uk-spinner={''} className="uk-spinner uk-icon"></span>
+            );
+        } else {
+            return false;
         }
     }
 
-    render () {
+    render() {
         console.log(this.props);
         return (
             <form className="uk-padding-small" data-uk-grid onSubmit={this.submitForm(this.props)}>
@@ -132,18 +137,20 @@ class ReportPage extends React.Component {
                 <fieldset className="uk-fieldset">
                     <legend className="uk-legend">Parameters</legend>
                     {/*<div*/}
-                        {/*className="uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom">*/}
-                        {/*<label className="uk-form-label">*/}
-                            {/*<input className="uk-checkbox" type="checkbox"/>*/}
-                            {/*<span className="uk-margin-small-left">Air mode</span>*/}
-                        {/*</label>*/}
+                    {/*className="uk-form-controls uk-padding-small uk-padding-remove-horizontal uk-padding-remove-bottom">*/}
+                    {/*<label className="uk-form-label">*/}
+                    {/*<input className="uk-checkbox" type="checkbox"/>*/}
+                    {/*<span className="uk-margin-small-left">Air mode</span>*/}
+                    {/*</label>*/}
                     {/*</div>*/}
                     <ParameterInput name={'volume'} onChange={this.changeParam} required/>
                     {/*<ParameterInput name={'square'} disabled={true}/>*/}
                     <FileInput onChange={this.onFileInputUpload}/>
                 </fieldset>
                 <div className='uk-width-1-1'>
-                    <button className="uk-button uk-button-primary" type='submit'>Create report</button>
+                    <button className="uk-button uk-button-primary" type='submit' disabled={this.props.inProgress}>
+                        <span>Create report</span>
+                    </button>
                     {this.renderPath()}
                 </div>
             </form>

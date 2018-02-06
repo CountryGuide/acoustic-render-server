@@ -38759,6 +38759,10 @@ var ReportPage = function (_React$Component) {
                     { href: "/api/download/" + this.props.path },
                     "Download"
                 );
+            } else if (this.props.inProgress) {
+                return _react2.default.createElement("span", { "data-uk-spinner": '', className: "uk-spinner uk-icon" });
+            } else {
+                return false;
             }
         }
     }, {
@@ -38822,8 +38826,12 @@ var ReportPage = function (_React$Component) {
                     { className: "uk-width-1-1" },
                     _react2.default.createElement(
                         "button",
-                        { className: "uk-button uk-button-primary", type: "submit" },
-                        "Create report"
+                        { className: "uk-button uk-button-primary", type: "submit", disabled: this.props.inProgress },
+                        _react2.default.createElement(
+                            "span",
+                            null,
+                            "Create report"
+                        )
                     ),
                     this.renderPath()
                 )
@@ -39013,9 +39021,13 @@ function report() {
     var value = action.payload && parseFloat(action.payload.value);
     var _state = _extends({}, state);
     switch (action.type) {
+        case 'ASYNC_START':
+            _state.inProgress = true;
+            return _state;
         case 'FORM_SUBMIT':
             var path = action.payload.data && action.payload.data.path;
             _state.path = path;
+            _state.inProgress = false;
             return _state;
         case 'RT_CHANGED':
             if (!_state.rtValues) {

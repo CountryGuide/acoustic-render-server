@@ -4,9 +4,13 @@ export function report(state={}, action) {
     const value = action.payload && parseFloat(action.payload.value);
     const _state = {...state};
     switch (action.type) {
+        case 'ASYNC_START':
+            _state.inProgress = true;
+            return _state;
         case 'FORM_SUBMIT':
             const path = action.payload.data && action.payload.data.path;
             _state.path = path;
+            _state.inProgress = false;
             return _state;
         case 'RT_CHANGED':
             if (!_state.rtValues) {
